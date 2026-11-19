@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-19T11:20:00+08:00",
+  "title": "BUGTI Design System",
+  "extensions": {
+    "motion": [
+      { "name": "page-transition", "value": "140ms ease-out", "purpose": "Short page transitions that respect prefers-reduced-motion" }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Nuxt UI solid primary action",
+      "html": "<button class=\"ds-primary\">View test entry</button>",
+      "css": ".ds-primary{background:oklch(50.8% 0.118 165.612);color:white;border:0;border-radius:8px;padding:8px 12px;font:600 16px/24px system-ui;cursor:pointer}.ds-primary:hover{opacity:.9}.ds-primary:focus-visible{outline:2px solid oklch(50.8% 0.118 165.612);outline-offset:4px}"
+    },
+    {
+      "name": "Secondary button",
+      "kind": "button",
+      "description": "Nuxt UI neutral outline secondary action",
+      "html": "<button class=\"ds-secondary\">Back to home</button>",
+      "css": ".ds-secondary{background:white;color:#334155;border:1px solid #cbd5e1;border-radius:8px;padding:8px 12px;font:600 16px/24px system-ui;cursor:pointer}.ds-secondary:hover{background:#f8fafc}.ds-secondary:focus-visible{outline:2px solid #047857;outline-offset:4px}"
+    },
+    {
+      "name": "Dimension badge",
+      "kind": "chip",
+      "description": "Use the same primary color for both poles without implying superiority",
+      "html": "<span class=\"ds-pole\">C</span>",
+      "css": ".ds-pole{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:12px;color:#047857;background:#e6f3ef;font:700 16px system-ui}"
+    },
+    {
+      "name": "Dimension container",
+      "kind": "card",
+      "refersTo": "card",
+      "description": "Nuxt UI PageCard container for both dimension poles",
+      "html": "<section class=\"ds-card\"><h3>Control</h3><p>Who controls the key mechanisms?</p></section>",
+      "css": ".ds-card{border:1px solid #e2e8f0;border-radius:16px;padding:24px;background:white;color:#0f172a;font:14px/24px system-ui}.ds-card h3{font-size:18px;margin:0 0 8px}.ds-card p{color:#64748b;margin:0}"
+    },
+    {
+      "name": "Brand navigation",
+      "kind": "nav",
+      "description": "Header links use ghost button styling",
+      "html": "<nav class=\"ds-nav\"><a href=\"#\">Four dimensions</a><a href=\"#\">About</a></nav>",
+      "css": ".ds-nav{display:flex;gap:8px;font:500 14px system-ui}.ds-nav a{color:#334155;padding:8px 12px;text-decoration:none;border-radius:8px}.ds-nav a:hover{background:#f1f5f9}.ds-nav a:focus-visible{outline:2px solid #047857;outline-offset:4px}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Nuxt UI native component styling",
+    "overview": "Use the native Nuxt UI design system. The BUGTI name, consistent icons, and emerald primary color establish the brand.",
+    "keyCharacteristics": ["Component reuse", "Explicit states", "Equal treatment of both poles", "Responsive desktop and mobile layouts"],
+    "rules": [],
+    "dos": ["Reuse Nuxt UI components and semantic colors; avoid wholesale theme overrides."],
+    "donts": ["Do not assign success and error colors to opposing preferences."]
+  }
+}

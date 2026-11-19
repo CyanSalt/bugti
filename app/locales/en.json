@@ -1,0 +1,175 @@
+{
+  "nativeName": "English",
+  "common": {
+    "siteTitle": "BUGTI · Programmer Personality Test",
+    "siteDescription": "We all write code. What's your type? Explore your preferences in control, constraints, cognition, and values.",
+    "home": "Home",
+    "homeLabel": "BUGTI home",
+    "about": "About",
+    "aboutBugti": "About BUGTI",
+    "dimensions": "Four dimensions",
+    "exploreDimensions": "Explore the dimensions",
+    "testEntry": "View test entry",
+    "backHome": "Back to home",
+    "learnTest": "About the test",
+    "skipContent": "Skip to main content",
+    "language": "Change language",
+    "tagline": "Discover your coding preferences.",
+    "personalityTypes": "Personality types"
+  },
+  "home": {
+    "title": "We all write code. What's your type?",
+    "description": "BUGTI is a programmer personality test. Explore how you manage complexity, approach constraints, form technical judgments, and value code.",
+    "explore": "Explore the four dimensions",
+    "pending": "The questionnaire is being prepared. Answers are not open yet.",
+    "pairsLabel": "Four preference pairs: C/D, F/G, R/E, U/A",
+    "dimensionsTitle": "Four trade-offs. Your coding preferences.",
+    "dimensionsDescription": "Explore how your choices of languages, tools, and approaches reflect the way you like to code."
+  },
+  "test": {
+    "pageTitle": "Test entry · BUGTI",
+    "title": "The questionnaire is being prepared",
+    "description": "The questionnaire is not open yet. Explore the four dimensions and sixteen personality types in the meantime."
+  },
+  "result": {
+    "pageTitle": "Test results · BUGTI",
+    "title": "No test results yet",
+    "description": "The questionnaire is not open yet. After you complete it, this page will show your four-letter type and dimension breakdown."
+  },
+  "about": {
+    "pageTitle": "About BUGTI · Programmer Personality Test",
+    "description": "A test about coding preferences.",
+    "purposeTitle": "What we want to understand",
+    "purpose": "Programmers can give different answers to the same technical problem. BUGTI explores the trade-offs behind those answers: who holds control, how much freedom to keep, how judgments are formed, and what is worth investing in.",
+    "limitsTitle": "Preferences evolve with experience",
+    "limits": "Projects, teams, and experience shape your choices. Use your four-letter type to reflect on your coding habits and discuss trade-offs with others.",
+    "explore": "Explore the four dimensions"
+  },
+  "error": {
+    "notFoundPageTitle": "Page not found · BUGTI",
+    "unavailablePageTitle": "Page unavailable · BUGTI",
+    "notFoundTitle": "This page does not exist",
+    "notFoundDescription": "The link may be incorrect. You can return to the BUGTI home page.",
+    "unavailableTitle": "This page is temporarily unavailable",
+    "unavailableDescription": "Return to the home page and try again. If the issue continues, please try later."
+  },
+  "dimensions": {
+    "control": { "title": "Control", "question": "Who controls the key mechanisms?" },
+    "constraints": { "title": "Constraints", "question": "Freedom of expression or upfront guarantees?" },
+    "values": { "title": "Values", "question": "What makes code worth investing in?" },
+    "cognition": { "title": "Cognition", "question": "Where does a technical judgment begin?" }
+  },
+  "poles": {
+    "C": { "label": "Control", "description": "Keep mechanisms visible, explainable, and adjustable, accepting complexity in exchange for control." },
+    "D": { "label": "Delegation", "description": "Trust languages, frameworks, and platforms, saving effort for the problems that truly need you." },
+    "F": { "label": "Flexibility", "description": "Keep room to combine and change things, accepting that developers will judge and verify some rules." },
+    "G": { "label": "Guarantees", "description": "Encode rules in types and models to make invalid states harder to create." },
+    "U": { "label": "Utility", "description": "Focus on benefits, costs, and maintenance. Extra investment needs a practical return." },
+    "A": { "label": "Aesthetics", "description": "Value coherent structure and elegant expression, investing in the quality of the code itself." },
+    "R": { "label": "Reasoning", "description": "Build a model first, using premises, causes, and boundaries to deduce why a solution works." },
+    "E": { "label": "Experimentation", "description": "Start with prototypes, measurements, and observations, then revise judgments using actual results." }
+  },
+  "typesPage": {
+    "pageTitle": "Personality types · BUGTI",
+    "title": "16 personalities. 16 ways to approach code.",
+    "description": "Some ask why first. Others start by trying. Explore these familiar characters and see which feels like you when you write code.",
+    "codeOrder": "Four letters, four questions in order",
+    "grouping": "Start with Control (C) or Delegation (D). C splits by Reasoning (R) or Experimentation (E); D splits by Flexibility (F) or Guarantees (G). CR/CE use the first and third letters of the type code; DF/DG use the first two.",
+    "classification": "How are the groups defined?",
+    "archive": "Personality archive",
+    "selectType": "Read the profile of {name} ({code})",
+    "groupNavigation": "Jump to a personality group",
+    "readMore": "Read description",
+    "readLess": "Hide description",
+    "readMoreLabel": "Read the description of {name} ({code})",
+    "readLessLabel": "Hide the description of {name} ({code})"
+  },
+  "personalityGroups": {
+    "CR": { "title": "Planners", "description": "Keep key mechanisms in your hands and think through principles, boundaries, and structure first. Understand why an approach works, then put your judgment into the system." },
+    "CE": { "title": "Practitioners", "description": "Keep critical parts adjustable and build judgment by working with them directly. Try, verify, and refine, letting actual feedback guide the next step." },
+    "DF": { "title": "Pioneers", "description": "Use existing capabilities while keeping your route open. Choose, combine, or replace tools to find an approach that fits the goal and explore new possibilities." },
+    "DG": { "title": "Guardians", "description": "Delegate general complexity to mature tools and rely on clear rules and guarantees. Let systems handle repetitive details so the parts work together reliably." }
+  },
+  "personalities": {
+    "CFRU": {
+      "name": "Philosopher",
+      "summary": "Understand why first, then find a solution that makes sense and works.",
+      "description": "You tend to ask why first. You want to understand the key mechanisms before finding a way to solve the problem. Languages and techniques can vary, but the solution must make sense. Understanding principles helps you rely less on guesswork and keep more control."
+    },
+    "CFRA": {
+      "name": "Artist",
+      "summary": "Master the mechanisms so your code can express your own ideas.",
+      "description": "You see programming as a way to express ideas. You want to understand the mechanisms and have enough freedom to organize code in your own way. Even after the feature works, you still care about precise expression, elegant structure, and whether the work reflects your intent."
+    },
+    "CFEU": {
+      "name": "Engineer",
+      "summary": "Adjust what you need and judge the tool by what it actually does.",
+      "description": "You treat programming as a tool for solving problems. You make changes when needed, try them in practice, and prefer to adjust the critical parts yourself. What matters is whether the tool meets the need. Once the problem is solved, you usually do not invest more just for the code's sake."
+    },
+    "CFEA": {
+      "name": "Inventor",
+      "summary": "Try new possibilities yourself and build something clever that feels right.",
+      "description": "You enjoy trying things yourself and turning ideas into something that runs. An existing implementation is rarely the end: you wonder how else it could be changed or combined. You enjoy the discoveries in experimentation and want the result to feel fresh, clever, and true to your idea."
+    },
+    "CGRU": {
+      "name": "Goalkeeper",
+      "summary": "Understand the boundaries and stop avoidable problems before they happen.",
+      "description": "You care about what may happen and what must be prevented. You think through the boundaries, then put the key rules into the parts you can control. You are willing to prepare more so the system has fewer surprises and problems are easier to handle when they arise."
+    },
+    "CGRA": {
+      "name": "Architect",
+      "summary": "Give every concept a place and every rule a reason in a coherent whole.",
+      "description": "You want the system to have a clear, consistent structure. You want control over key mechanisms, a precise place for each concept, and a reason for every rule. Even when the system runs, ambiguity, duplication, and contradictions make you want to reorganize the design."
+    },
+    "CGEU": {
+      "name": "Inspector",
+      "summary": "A guarantee still needs a hands-on check before you trust it.",
+      "description": "You like explicit guarantees and habitually check whether they hold. You test boundaries, observe behavior, and adjust critical details to see whether the system works as expected under real conditions. For you, it should be fine needs to become I tried it and it is fine."
+    },
+    "CGEA": {
+      "name": "Craftsperson",
+      "summary": "Verify and refine by hand until correct work also feels well made.",
+      "description": "You want things to follow clear rules and every detail to be well considered. You like hands-on verification and repeated adjustment, continuing to refine after correctness is established. Accurate behavior, coherent structure, and clean expression are worth a little more time."
+    },
+    "DFRU": {
+      "name": "Planner",
+      "summary": "Work out the approach first, then use tools where they make effort count.",
+      "description": "You think through the goal and approach before deciding which tools to use. You do not want to take on work that existing capabilities can handle, and you adapt the implementation route as needed. You care about arranging your effort so it solves the problems that really matter."
+    },
+    "DFRA": {
+      "name": "Director",
+      "summary": "Start with a vision and bring different tools together to express it.",
+      "description": "You like forming an overall idea, then bringing suitable tools and modules together. You do not need to handle every low-level detail yourself, but you want those capabilities to express your design accurately. You care about how the parts connect and whether the whole is clear and coherent."
+    },
+    "DFEU": {
+      "name": "Doer",
+      "summary": "Try what works, change what doesn't, and focus on getting it done.",
+      "description": "You first ask whether the problem has been solved. You use what is available, try whichever approach works, and switch when it does not. You have little attachment to languages or technical routes and do not want complexity without a practical return. Getting it done is your most direct measure."
+    },
+    "DFEA": {
+      "name": "Explorer",
+      "summary": "Try different tools and let the experience reveal new possibilities.",
+      "description": "You enjoy exploring new possibilities with different tools and often discover what you really want through trying. You are willing to change direction and welcome unexpected discoveries. Beyond whether it works, you want to see what new expression different combinations can create."
+    },
+    "DGRU": {
+      "name": "Steward",
+      "summary": "Choose reliable tools and clear rules to make everyday work easier.",
+      "description": "You want to choose reliable tools, arrange the rules and responsibilities, and let things run steadily. You do not want to keep worrying about details the system can handle. You accept some constraints in exchange for fewer surprises, less maintenance, and an easier everyday routine."
+    },
+    "DGRA": {
+      "name": "Lawmaker",
+      "summary": "Think the rules through and let machines enforce them consistently.",
+      "description": "You believe that once rules are clear, machines should enforce them strictly. Instead of relying on everyone to remember and comply, you prefer types, frameworks, and automated checks to block invalid approaches. You seek consistent order so individual improvisation has less influence on the system."
+    },
+    "DGEU": {
+      "name": "Administrator",
+      "summary": "Use proven tools and real observations to keep solving problems reliably.",
+      "description": "You trust mature tools and clear rules, but ultimately judge actual behavior. You use testing and observation to confirm reliability, adjusting configuration or changing the solution when needed. You do not need control over every internal detail; you care about solving problems consistently over time."
+    },
+    "DGEA": {
+      "name": "Sound Engineer",
+      "summary": "Try and adjust until every part works in harmony with the others.",
+      "description": "You want mature tools to follow consistent rules and keep adjusting them through use. Each part working on its own is not enough: together, their interfaces should agree, their behavior should feel natural, and their details should not conflict. You seek a system whose parts fit just right."
+    }
+  }
+}
