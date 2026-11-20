@@ -25,9 +25,10 @@ watch(() => route.hash, (hash) => {
       variant="ghost"
       :aria-pressed="selected"
       :aria-label="t('typesPage.selectType', { name: t(`personalities.${personality.code}.name`), code: personality.code })"
-      :class="['archive-choice hidden w-full items-start gap-4 rounded-xl p-4 text-start lg:flex', selected ? group.surfaceClass : '']"
+      :class="['archive-choice relative isolate hidden w-full items-start gap-4 rounded-xl p-4 text-start lg:flex']"
       @click="emit('select', props.personality)"
     >
+      <span v-if="selected" data-archive-highlight aria-hidden="true" :class="['pointer-events-none absolute inset-0 -z-10 rounded-[inherit]', group.surfaceClass]" />
       <UIcon :name="personality.icon" :class="['mt-1 size-6 shrink-0', group.textClass]" aria-hidden="true" />
       <span class="min-w-0 flex-1">
         <span class="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">

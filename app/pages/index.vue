@@ -20,8 +20,12 @@ useSeoMeta({
         title: 'mx-auto max-w-4xl text-balance text-4xl/tight sm:text-6xl/tight',
         description: 'mx-auto max-w-[55ch] text-pretty text-base/7 sm:text-lg/8',
         footer: 'mt-8',
+        body: 'mt-7 sm:mt-9',
       }"
     >
+      <template #body>
+        <HomePersonalityPreview />
+      </template>
       <template #links>
         <div class="flex flex-col items-center gap-4">
           <UButton id="test-entry" to="/test" :label="t('common.testEntry')" trailing-icon="i-lucide-arrow-right" size="xl" />

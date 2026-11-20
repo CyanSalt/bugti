@@ -9,6 +9,7 @@ defineProps<{ dimension: Dimension }>()
 
 <template>
   <UPageCard
+    :id="`dimension-${dimension.id}`"
     :title="t(`dimensions.${dimension.id}.title`)"
     :description="t(`dimensions.${dimension.id}.question`)"
     :icon="dimension.icon"

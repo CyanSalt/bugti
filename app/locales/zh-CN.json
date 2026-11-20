@@ -20,8 +20,9 @@
   "home": {
     "title": "同样写代码，你是哪一型？",
     "description": "BUGTI 程序员人格测试，探索你的编程习惯和技术选择偏好。",
-    "dimensionsDescription": "控制权、规则、判断方式与代码投入，四个角度看你的技术取舍。",
-    "personalitiesDescription": "四个维度组合成 16 种编程态度，从哲学家到实干家。",
+    "dimensionsDescription": "看看测试如何区分不同的编程态度。",
+    "personalitiesDescription": "从哲学家到实干家，看看 16 种不同的编程态度。",
+    "previewLabel": "浏览人格类型",
     "testCount": "{count} 道题",
     "testDuration": "预计 7 到 10 分钟"
   },

@@ -102,7 +102,15 @@ The [design sidecar](.impeccable/design.json) records component snippets and sup
 
 The personality directory uses compact grouped choices and a sticky adjacent reading panel at 1024px and wider. Below that breakpoint, each choice expands in place using UCollapsible. Remove large icon backplates and repeated action buttons; retain role symbols, codes, all approved copy, and four-group color meaning. Classification is secondary disclosure.
 
-The reading panel has a viewport-bounded height and independent scrolling so long translations remain reachable without shifting surrounding content. Selection uses a full-surface tint and `aria-pressed`, with a polite announcement of the updated profile. Profile changes use a cancellable 220ms, 6px horizontal settling motion with bounded blur and no opacity dip. Reduced motion updates immediately. Native Nuxt UI controls own mobile disclosure and focus.
+The reading panel has a viewport-bounded height and independent scrolling so long translations remain reachable without shifting surrounding content. Selection uses a full-surface tint and `aria-pressed`, with a polite announcement of the updated profile. The selected tint moves to the next choice over 320ms, bounded to 240px when moving between distant groups. The title/icon, code, summary, prose, and preferences settle in a short 280ms sequence with 24ms offsets, without fading content. Repeated selections cancel unfinished effects; reduced motion updates immediately. Native Nuxt UI controls own mobile disclosure and focus.
+
+## Interaction motion
+
+The home hero previews four approved personality types between the description and Start test, using native UCarousel and naked UPageCard composition. Show existing role icons, names, and one-sentence summaries, with native links to the full profile. Keep dimension definitions and codes out of the hero. Show one item on narrow screens, two on medium screens, and three on wide screens; swipe, keyboard arrows, and native previous/next controls reveal the remaining previews. No autoplay or personalized-result claims. Reduced motion uses zero-duration carousel movement. The primary test action remains independent of preview browsing.
+
+Questionnaire selection retains native radio state and adds a 180ms indicator confirmation. Auto-advance leaves 160ms for the selected response to register before moving; manual navigation, changing the response, turning auto-advance off, restart, route changes, and unmount cancel pending advancement. Reduced motion advances without the visual delay. New headings and radio cards settle directionally over 260ms with bounded stagger; Previous reverses direction. Actual answered progress uses the native UProgress transform transition at 320ms. No animation waits gate manual navigation or result submission.
+
+Short-lived Web Animations are owned by `app/utils/motion.ts`, canceled on replacement and disposal, and removed from the active set when finished. Preserve static rendered defaults and avoid opacity dips or long-distance motion. The system palette, typography, native component behavior, product copy, and scoring stay unchanged.
 
 ## Do's and Don'ts
 

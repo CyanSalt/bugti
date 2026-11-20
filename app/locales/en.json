@@ -20,8 +20,9 @@
   "home": {
     "title": "We all write code. What's your type?",
     "description": "BUGTI is a programmer personality test about your coding habits and technical preferences.",
-    "dimensionsDescription": "Explore how you share control, set rules, form judgments, and invest in code.",
-    "personalitiesDescription": "Four dimensions combine into 16 approaches to code, from the Philosopher to the Doer.",
+    "dimensionsDescription": "See how the test distinguishes different approaches to code.",
+    "personalitiesDescription": "From the Philosopher to the Doer, explore 16 different approaches to code.",
+    "previewLabel": "Explore personality types",
     "testCount": "{count} questions",
     "testDuration": "About 7 to 10 minutes"
   },

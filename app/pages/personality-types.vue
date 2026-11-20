@@ -3,6 +3,7 @@ import { useI18n } from 'vue-i18n'
 import { dimensions } from '~/data/dimensions'
 import { getPersonalitiesInGroup, getPersonalityPoles, personalities, personalityGroups } from '~/data/personalities'
 import type { Personality } from '~/data/personalities'
+import { createMotionController } from '~/utils/motion'
 
 const { t } = useI18n({ useScope: 'global' })
 const groups = personalityGroups.map(group => ({ ...group, personalities: getPersonalitiesInGroup(group.id) }))
@@ -17,23 +18,45 @@ const selectedGroup = computed(() => groups.find(group => group.personalities.so
 const showClassification = ref(false)
 const detail = useTemplateRef('detail')
 const panel = useTemplateRef('panel')
-let detailAnimation: Animation | undefined
+const choices = useTemplateRef('choices')
+const motion = createMotionController(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+let selectionRevision = 0
 
 async function selectPersonality(personality: Personality) {
   if (selected.value.code === personality.code) return
-  detailAnimation?.cancel()
+  const revision = ++selectionRevision
+  const oldHighlight = choices.value?.querySelector<HTMLElement>('[data-archive-highlight]')
+  const previous = oldHighlight?.getBoundingClientRect()
+  motion.clear()
   selected.value = personality
   await nextTick()
-  if (selected.value.code !== personality.code) return
+  if (revision !== selectionRevision) return
   if (panel.value) panel.value.scrollTop = 0
-  if (!detail.value || !detail.value.animate || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-  detailAnimation = detail.value.animate([
-    { filter: 'blur(2px)', transform: 'translateX(6px)' },
-    { filter: 'blur(0)', transform: 'translateX(0)' },
-  ], { duration: 220, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' })
+
+  const highlight = choices.value?.querySelector<HTMLElement>('[data-archive-highlight]')
+  const next = highlight?.getBoundingClientRect()
+  const previousVisible = previous && previous.bottom > 80 && previous.top < window.innerHeight
+  if (highlight && next && next.width > 0 && next.height > 0 && previousVisible) {
+    const distance = Math.max(-240, Math.min(240, previous.top - next.top))
+    motion.animate(highlight, [
+      { transform: `translate(${previous.left - next.left}px, ${distance}px) scale(${previous.width / next.width}, ${previous.height / next.height})`, transformOrigin: 'top left' },
+      { transform: 'translate(0, 0) scale(1)', transformOrigin: 'top left' },
+    ], { duration: 320, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' })
+  }
+
+  const sections = detail.value?.querySelectorAll<HTMLElement>('[data-archive-section]') ?? []
+  sections.forEach((section, index) => {
+    motion.animate(section, [
+      { transform: `translateX(${index === 0 ? 10 : 6}px)` },
+      { transform: 'translateX(0)' },
+    ], { duration: 280, delay: index * 24, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' })
+  })
 }
 
-onBeforeUnmount(() => detailAnimation?.cancel())
+onBeforeUnmount(() => {
+  selectionRevision++
+  motion[Symbol.dispose]()
+})
 useSeoMeta({
   title: () => t('typesPage.pageTitle'), description: () => t('typesPage.description'),
   ogTitle: () => t('typesPage.pageTitle'), ogDescription: () => t('typesPage.description'),
@@ -66,7 +89,7 @@ useSeoMeta({
     </div>
 
     <UPageGrid class="mt-8 items-start gap-10 sm:grid-cols-1 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] xl:gap-16">
-      <div class="min-w-0 space-y-10">
+      <div ref="choices" class="min-w-0 space-y-10">
         <section v-for="group in groups" :id="`group-${group.id}`" :key="group.id" :aria-labelledby="`heading-${group.id}`">
           <div class="mb-4 flex items-baseline gap-3 border-b border-default pb-3">
             <h2 :id="`heading-${group.id}`" :class="['text-2xl font-bold', group.textClass]">{{ t(`personalityGroups.${group.id}.title`) }}</h2>
@@ -83,18 +106,18 @@ useSeoMeta({
         <UCard :ui="{ body: 'p-0' }">
           <div ref="panel" tabindex="0" aria-labelledby="archive-name" class="h-[min(38rem,calc(100dvh-7rem))] overflow-y-auto p-7 xl:p-10">
           <div id="archive-detail" ref="detail" aria-live="polite" aria-atomic="true">
-            <div class="flex items-start justify-between gap-5">
+            <div data-archive-section class="flex items-start justify-between gap-5">
               <div class="min-w-0">
                 <h2 id="archive-name" :class="['text-3xl/tight font-bold text-balance break-words xl:text-4xl/tight', selectedGroup.textClass]">{{ t(`personalities.${selected.code}.name`) }}</h2>
                 <p :class="['mt-3 text-sm font-semibold', selectedGroup.textClass]">{{ t(`personalityGroups.${selectedGroup.id}.title`) }} · {{ selectedGroup.id }}</p>
               </div>
               <UIcon :name="selected.icon" :class="['size-12 shrink-0', selectedGroup.textClass]" aria-hidden="true" />
             </div>
-            <p class="mt-3 text-lg font-semibold tracking-wider text-muted">{{ selected.code }}</p>
-            <p class="mt-6 text-xl/8 font-medium text-highlighted">{{ t(`personalities.${selected.code}.summary`) }}</p>
+            <p data-archive-section class="mt-3 text-lg font-semibold tracking-wider text-muted">{{ selected.code }}</p>
+            <p data-archive-section class="mt-6 text-xl/8 font-medium text-highlighted">{{ t(`personalities.${selected.code}.summary`) }}</p>
             <USeparator class="my-7" />
-            <p class="text-base/8 text-toned">{{ t(`personalities.${selected.code}.description`) }}</p>
-            <dl class="mt-8 grid grid-cols-2 gap-x-5 gap-y-4">
+            <p data-archive-section class="text-base/8 text-toned">{{ t(`personalities.${selected.code}.description`) }}</p>
+            <dl data-archive-section class="mt-8 grid grid-cols-2 gap-x-5 gap-y-4">
               <div v-for="pole in getPersonalityPoles(selected.code)" :key="pole.code" class="flex items-baseline gap-2">
                 <dt :class="['text-lg font-bold', selectedGroup.textClass]">{{ pole.code }}</dt>
                 <dd class="text-sm text-toned">{{ t(`poles.${pole.code}.label`) }}</dd>

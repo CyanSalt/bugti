@@ -2,6 +2,7 @@
 import { useI18n } from 'vue-i18n'
 import { isAnswer, isAnswerSet, questions, questionnaireVersion } from '~/data/questionnaire'
 import { createResultPath, readResultQuery } from '~/utils/resultLink'
+import { createMotionController } from '~/utils/motion'
 
 const { t } = useI18n({ useScope: 'global' })
 const { locale, setLocale } = useAppLocale()
@@ -13,8 +14,11 @@ const submitting = ref(false)
 const autoAdvance = ref(false)
 const questionHeading = useTemplateRef('questionHeading')
 const reviewHeading = useTemplateRef('reviewHeading')
-let questionAnimation: Animation | undefined
-let questionAnimationTimer: ReturnType<typeof setTimeout> | undefined
+const questionBody = useTemplateRef('questionBody')
+const motion = createMotionController(() => window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+let stepRevision = 0
+let advanceTimer: ReturnType<typeof setTimeout> | undefined
+const advancing = ref(false)
 
 const answered = computed(() => draft.value.answers.filter(isAnswer).length)
 const question = computed(() => questions[draft.value.step])
@@ -30,7 +34,15 @@ const currentAnswer = computed({
     if (!isAnswer(answer) || !question.value) return
     draft.value.answers[draft.value.step] = answer
     answerError.value = false
-    if (autoAdvance.value) goTo(draft.value.step + 1)
+    if (autoAdvance.value) {
+      cancelAutoAdvance()
+      const step = draft.value.step
+      advancing.value = true
+      advanceTimer = setTimeout(() => {
+        if (draft.value.step === step && autoAdvance.value) goTo(step + 1)
+        cancelAutoAdvance()
+      }, window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 160)
+    }
   },
 })
 
@@ -60,19 +72,34 @@ function restoreLinkedAnswers() {
 watch(ready, restoreLinkedAnswers)
 watch(() => route.query, restoreLinkedAnswers)
 
-async function focusStep() {
+function cancelAutoAdvance() {
+  clearTimeout(advanceTimer)
+  advanceTimer = undefined
+  advancing.value = false
+}
+
+watch(autoAdvance, enabled => { if (!enabled) cancelAutoAdvance() })
+watch(() => route.query, cancelAutoAdvance)
+
+async function focusStep(direction = 1) {
+  const revision = ++stepRevision
+  motion.clear()
   await nextTick()
+  if (revision !== stepRevision) return
   const heading = reviewing.value ? reviewHeading.value : questionHeading.value
   heading?.focus({ preventScroll: true })
   heading?.scrollIntoView({ block: 'nearest', behavior: 'instant' })
-  questionAnimation?.cancel()
-  clearTimeout(questionAnimationTimer)
-  if (!heading?.animate || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-  questionAnimation = heading.animate([
-    { transform: 'translateY(5px)', filter: 'blur(1px)' },
-    { transform: 'translateY(0)', filter: 'blur(0)' },
-  ], { duration: 180, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' })
-  questionAnimationTimer = setTimeout(() => questionAnimation?.cancel(), 200)
+  motion.animate(heading, [
+    { transform: `translateX(${direction * 10}px)` },
+    { transform: 'translateX(0)' },
+  ], { duration: 260, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' })
+  const options = questionBody.value?.querySelectorAll<HTMLElement>('[data-slot="item"]') ?? []
+  options.forEach((option, index) => {
+    motion.animate(option, [
+      { transform: `translateX(${direction * 6}px)` },
+      { transform: 'translateX(0)' },
+    ], { duration: 260, delay: 24 + index * 16, easing: 'cubic-bezier(0.16, 1, 0.3, 1)' })
+  })
 }
 
 function begin() {
@@ -81,6 +108,9 @@ function begin() {
 }
 
 function restart() {
+  cancelAutoAdvance()
+  stepRevision++
+  motion.clear()
   reset()
   restoringError.value = false
   answerError.value = false
@@ -89,12 +119,15 @@ function restart() {
 }
 
 function goTo(step: number) {
-  draft.value.step = step
+  cancelAutoAdvance()
+  const direction = step >= draft.value.step ? 1 : -1
+  draft.value.step = Math.max(0, Math.min(questions.length, step))
   answerError.value = false
-  void focusStep()
+  void focusStep(direction)
 }
 
 function advance() {
+  cancelAutoAdvance()
   if (!isAnswer(draft.value.answers[draft.value.step])) {
     answerError.value = true
     return
@@ -114,8 +147,9 @@ async function finish() {
 }
 
 onBeforeUnmount(() => {
-  questionAnimation?.cancel()
-  clearTimeout(questionAnimationTimer)
+  stepRevision++
+  cancelAutoAdvance()
+  motion[Symbol.dispose]()
 })
 useSeoMeta({ title: () => t('test.pageTitle'), robots: 'noindex, nofollow' })
 </script>
@@ -149,10 +183,10 @@ useSeoMeta({ title: () => t('test.pageTitle'), robots: 'noindex, nofollow' })
           <p class="font-medium text-highlighted">{{ t('test.progress', { answered, total: questions.length }) }}</p>
           <UButton color="neutral" variant="link" size="sm" :label="t('test.restart')" class="p-0" @click="restart" />
         </div>
-        <UProgress :model-value="answered" :max="questions.length" size="sm" :aria-label="t('test.progressLabel')" />
+        <UProgress :model-value="answered" :max="questions.length" size="sm" :aria-label="t('test.progressLabel')" :ui="{ indicator: 'duration-320 ease-[cubic-bezier(0.16,1,0.3,1)]' }" />
       </div>
 
-      <div v-if="question && !reviewing">
+      <div v-if="question && !reviewing" ref="questionBody" :data-advancing="advancing">
         <p class="mb-3 text-sm font-semibold text-primary">{{ t('test.questionNumber', { current: draft.step + 1, total: questions.length }) }}</p>
         <h1 id="question-heading" ref="questionHeading" tabindex="-1" class="min-h-28 text-2xl/9 font-semibold text-highlighted outline-none sm:min-h-24 sm:text-3xl/11">{{ t(`questions.${question.id}`) }}</h1>
         <form class="mt-7" @submit.prevent="advance">
@@ -166,7 +200,8 @@ useSeoMeta({ title: () => t('test.pageTitle'), robots: 'noindex, nofollow' })
             variant="card"
             size="lg"
             highlight
-            :ui="{ fieldset: 'gap-3', item: 'min-h-14 cursor-pointer duration-150 has-data-[state=checked]:bg-primary/10 has-data-[state=checked]:[&_[data-slot=label]]:text-primary', label: 'text-base/6' }"
+            class="question-responses"
+            :ui="{ fieldset: 'gap-3', item: 'min-h-14 cursor-pointer duration-160 has-data-[state=checked]:bg-primary/10 has-data-[state=checked]:[&_[data-slot=label]]:text-primary', label: 'text-base/6' }"
           />
           <p v-if="answerError" id="answer-error" role="alert" class="mt-4 text-sm text-error">{{ t('test.chooseAnswer') }}</p>
           <div v-if="answered === questions.length && draft.step < questions.length - 1" class="mt-5 flex justify-end">
@@ -209,3 +244,20 @@ useSeoMeta({ title: () => t('test.pageTitle'), robots: 'noindex, nofollow' })
   </UContainer>
   </div>
 </template>
+
+<style scoped>
+.question-responses :deep([data-slot="item"]:has([data-state="checked"]) [data-slot="indicator"]) {
+  animation: response-confirm 180ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes response-confirm {
+  from { transform: scale(0.65); }
+  to { transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .question-responses :deep([data-slot="indicator"]) {
+    animation: none;
+  }
+}
+</style>

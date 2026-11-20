@@ -18,7 +18,7 @@ FIRST VIEWPORT: Page title, short introduction, group anchors, classification di
 
 FORM: The user selected an interactive personality archive. At 1024px and wider, a compact grouped list sits beside a viewport-bounded scrollable reading panel. Narrow screens use inline UCollapsible profiles. Keep all approved names, summaries, full descriptions, four preferences, group membership, and no-scoring boundaries.
 
-MOTION: Selection is the focal moment: a cancellable 220ms horizontal settling motion and bounded blur, without fading the entire panel or moving neighboring controls. Preserve selection across language changes; reduced motion updates directly. Native disclosure handles mobile expansion.
+MOTION: Selection is the focal moment: the native selected tint travels to the next choice over 320ms with a bounded 240px displacement, while title/icon, code, summary, prose, and preferences settle over 280ms with 24ms offsets. Keep all content visible, cancel superseded effects, and preserve surrounding layout. Preserve selection across language changes; reduced motion updates directly. Native disclosure handles mobile expansion.
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
 
