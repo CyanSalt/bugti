@@ -30,6 +30,6 @@ FINISH: unreviewed and undocumented is unfinished; this build ends with the fini
 - Desktop choices use `aria-pressed`; updates are announced through the archive's live region. Mobile expand/collapse controls name the type for screen readers. Multiple mobile descriptions may stay open. Language changes preserve selection and open state.
 - Grouping starts with C/D, then uses R/E for C and F/G for D. CR/CE are not four-letter-code prefixes. Each group contains four types; names and approved full type descriptions remain unchanged.
 - Group links use native anchors and the existing header offset. Each section shows its group name, two-letter identifier, and shared coding attitude.
-- The directory ends after the four groups. Shared navigation provides access to About; omit a separate disclaimer section and limitations link.
+- The directory ends after the four groups. The shared footer provides access to About; omit a separate disclaimer section and limitations link.
 - Keep classification copy focused on how group codes map to the four-letter type.
 - Questionnaire and scoring remain unavailable.

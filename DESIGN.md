@@ -59,9 +59,9 @@ Allow long translated labels and canonical English names to wrap. Dimension code
 
 ## Layout
 
-Use `UContainer` for width and horizontal spacing. The dimension summary has two columns on mobile and four on desktop. Dimension cards use one column on mobile and two on wide screens; each card presents both ends side by side.
+Use `UContainer` for width and horizontal spacing. The home page has two short introductions, for four dimensions and sixteen personalities, each with its own destination. Present them side by side on desktop and stack them on mobile, without showing full classification details. On `/dimensions`, the dimension summary has two columns on mobile and four on desktop. Dimension cards use one column on mobile and two on wide screens; `UPageGrid` presents both ends side by side inside each `UPageCard`.
 
-Use the `UHeader` mobile menu and a shared footer. Keep controls content-sized rather than assuming Chinese or English text lengths.
+Use `UPageGrid`, naked `UPageCard` sections, and `USeparator` for the home page introductions; preserve native heading, body, and footer slots. Use the `UHeader` mobile menu and a shared footer. A single `UDropdownMenu` groups dimension and personality links on desktop; a vertical `UNavigationMenu` preserves that hierarchy on mobile. Keep About in the footer only. Keep controls content-sized rather than assuming Chinese or English text lengths.
 
 ## Elevation & Depth
 
@@ -76,13 +76,16 @@ The base radius is 8px and cards use the Nuxt UI 16px radius. Use `UBadge` for s
 - `UPageHero`: Home page title, description, and entry actions.
 - `UPageSection`, `UPageGrid`, and `UPageCard`: Dimension explanations using the shared theme.
 - `UButton`: Solid primary actions, outline secondary actions, and ghost navigation.
-- `UEmpty`: Unavailable questionnaire, missing results, and error states with actionable recovery.
+- `UEmpty`: Missing or invalid result links and error states with actionable recovery.
+- `URadioGroup`: Native card-style agreement options; no preselected answer and explicit Next navigation.
+- `UProgress`: Actual answered-item progress and dimension response indices, never a fabricated confidence score.
+- `UInput`: Read-only, selectable result URL with manual-copy fallback.
 - `UAlert`: Product limitations.
 - `UColorModeButton`: Native theme switching.
 - `LanguageSwitcher`: `UDropdownMenu` with a ghost icon button and native language names.
 - `UApp`: Nuxt UI messages synchronized with the vue-i18n locale.
 
-Use the existing 140ms page transition and respect `prefers-reduced-motion`. Anchor navigation positions content directly, leaving 80px above it. Keyboard focus must be visible, and text selection must remain readable in both themes.
+Use a non-blocking 140ms settling animation on the newly rendered page shell and respect `prefers-reduced-motion`. Do not gate route replacement on a CSS leave-animation completion event. Anchor navigation positions content directly, leaving 80px above it. Keyboard focus must be visible, and text selection must remain readable in both themes.
 
 The [design sidecar](.impeccable/design.json) records component snippets and supplementary metadata. It is development material, not a runtime theme source.
 

@@ -2,51 +2,63 @@
 
 ## Scope
 
-Keep the existing website foundation and native Nuxt UI styling. The home page is a concise test entry with dimension explanations below it. The questionnaire and scoring are not connected.
+Keep the existing website foundation and native Nuxt UI styling. The home page introduces the product and opens the 32-statement questionnaire; the result page restores actual answers from a copyable link.
 
-Product boundaries are defined in the [product overview](../../PRODUCT.md); reusable visual rules are in the [design system](../../DESIGN.md).
+Product boundaries are defined in the [product overview](../../PRODUCT.md); reusable visual rules are in the [design system](../../DESIGN.md). Scoring and URL behavior are documented in [Questionnaire implementation](../../docs/0004-questionnaire-implementation.md).
 
 ## Direction contract
 
-THESIS: Introduce the programmer personality test clearly. Keep the entry action and unavailable status together; do not suggest the questionnaire can already be answered.
+THESIS: Make the path from introduction to answering to a readable result direct. Keep the question count and estimated duration beside Start test. Explain invalid and balanced outcomes without forcing a personality assignment.
 
-OWN-WORLD: Native Nuxt UI styling with emerald primary and slate neutral colors. Reuse the library's buttons, containers, navigation, cards, empty states, alerts, and theme controls. Preserve system typography, rounding, borders, and focus behavior.
+OWN-WORLD: Native Nuxt UI styling with emerald primary and slate neutral colors. Reuse buttons, containers, navigation, cards, radio groups, progress, empty states, alerts, collapsibles, and theme controls. Preserve system typography, rounding, borders, and keyboard focus.
 
-STORY: Visitors understand the purpose, explore four dimensions, and open a test entry that explains the unavailable questionnaire. The About page supports reflection and discussion; a direct result-page visit shows an honest empty state.
+STORY: Visitors answer concrete coding situations, review their choices, then read a personality summary and dimension breakdown. They can copy a link and reopen it without an account. The About page and dimension explanations remain available independently.
 
-FIRST VIEWPORT: BUGTI branding and navigation at the top; centered title and concise description; two actions and the unavailable-status message below; a four-pair summary that uses two columns on mobile. No fabricated statistics, scores, or reports.
+FIRST VIEWPORT: BUGTI branding and navigation at the top; centered title and concise product description; Start test with 32 questions and an estimated 7–10-minute duration. No fabricated usage statistics or sample results.
 
-FORM: seed: none (pinned). The user requested Nuxt and Nuxt UI with maximum reuse of their native component styling, and confirmed a concise test entry. Preserve that direction rather than creating a new visual identity. Theme switching and short page transitions must respect reduced-motion preferences.
+FORM: seed: none (pinned). Use Nuxt UI's native language rather than a new visual identity. Theme switching and non-blocking settling animations respect reduced-motion preferences.
 
-FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
+FINISH: Visual and behavioral review includes actual answering, result restoration, recovery, and translation states. No raster media is introduced for the questionnaire.
 
 ## Routes and states
 
-- `/`: Brand introduction, test entry, dimension summary, and four dimension explanations.
-- `/test`: Questionnaire unavailable; actions lead to the dimensions or home page.
-- `/result`: No result available; no sample scores or fabricated report.
-- `/personality-types`: Sixteen approved archetypes grouped by CR/CE/DF/DG, with a desktop reading panel and mobile inline expansion. See the [personality page brief](personality-types.md).
+- `/`: Brand introduction, Start test, count/duration, and two introductions linking independently to dimensions and personality types.
+- `/dimensions`: Four preference pairs in canonical order, with responsive explanations.
+- `/test`: Instructions or tab-local draft, one statement at a time, five required agreement choices with hypothetical-scenario instructions, previous/next navigation, and full answer review before submission. Reload resumes the tab's draft.
+- `/result`: Query-restored answers and scores, rendered on the server and revalidated by the client. A complete non-tied result shows its approved personality profile with practical and collaboration sections. Tied dimensions retain candidates, older-version incomplete dimensions stay unscored, and a bare or invalid link shows an actionable empty state.
+- `/personality-types`: Sixteen approved archetypes grouped by CR/CE/DF/DG, with a desktop reading panel and mobile inline expansion. Candidate links select the intended profile. See the [personality page brief](personality-types.md).
 - `/about`: Purpose and reflection on how preferences evolve.
 - Unknown routes: A custom 404 page with a return-home action.
 - Other page errors: A generic recovery message without exposing internal errors.
 
-## Home page composition
+## Home composition
 
-Keep the BUGTI brand and navigation at the top, including language and theme controls. Place a centered title and concise description above two actions: view the test entry and explore the dimensions. Show the questionnaire's unavailable status next to these actions.
+Keep the shared brand, language, and theme controls. About remains in the footer. Group dimensions and personalities under Personality types. Place the primary action above a compact question-count/duration row. Below the hero, use equally prominent introductions to the two existing explanation pages, side by side on desktop and stacked on mobile.
 
-The four code pairs appear in a horizontal summary on desktop and a two-column layout on mobile. Detailed explanations follow in responsive cards. Do not add fabricated usage numbers, scores, or report previews.
+## Test composition
+
+Use a bounded reading width. Put actual answered progress and Start over above the current statement. Show labeled native radio cards vertically so long translations remain legible and the disagreement-to-agreement order never changes. The instructions ask respondents to imagine unfamiliar situations and choose their preference. Neutral is the valid midpoint; there is no skip choice. Put Previous and Next after the options; do not auto-advance on selection. Review lists all answers with editing controls and a View my result action.
+
+Question changes focus the heading and use a bounded, cancellable settling animation without dimming the whole view. Storage unavailability is explicitly described. No minimum completion-time rule or misleading progress timer is used.
+
+## Result composition
+
+On wide screens, place the personality profile beside four dimension score cards; stack them on narrow screens. Each pole receives equally prominent text and the same primary color. Display the response index, not a confidence percentage. Keep exact ties distinct from malformed data and retain pole-endorsement patterns. Historical results retain their version and cannot be edited into current answers.
+
+The profile preserves approved names and copy, with additional in-practice, trade-off, and collaboration sections. Below it, explain the non-tied preference directions. Keep one Copy result link action in the top toolbar, with brief answer-sharing disclosure and a URL field only if automatic copying fails; no dedicated saving section. Full answer disclosure is secondary. Editing restores current-version answers; retaking explicitly starts a fresh draft.
 
 ## Interaction requirements
 
-- Header links, mobile navigation, anchor links, and recovery actions must lead to their stated destination.
-- Language changes preserve the current route and synchronize copy, metadata, and Nuxt UI labels.
-- Theme switching and short page transitions preserve visual continuity.
+- Header links, mobile navigation, recovery, candidate links, and result-editing actions lead to their stated destination.
+- Language changes preserve the current route and synchronize copy, metadata, and Nuxt UI labels. Copied current-version links include the current language; historical copies keep their original token and language.
+- Page replacement occurs immediately without waiting for a CSS leave event; a short new-page settling animation maintains continuity.
 - Respect reduced-motion preferences and maintain visible keyboard focus.
-- Keep public copy affirmative and specific. Omit repeated disclaimers, ability comparisons, scoring-weight caveats, and editorial promises about avoiding fabricated content. Preserve unavailable states and recovery instructions.
-- Keep both sides of each dimension equally legible and avoid value judgments in styling.
+- Skip to content must preserve result query data.
+- Keep public copy concise and specific; do not repeat scientific claims or introduce ability judgments.
+- No account, database, or public deployment is added.
 
 ## Verification
 
-For changes to this surface, check desktop and narrow mobile layouts, including long English labels. Inspect language and theme switching, mobile menu opening and closing, anchor positioning, and empty/error state recovery.
+Check desktop and narrow mobile layouts in both languages, including long English labels. Check required responses, answer retention, draft reload, all 32 steps, review and result navigation, copy/reopen, invalid data, ties, missing answers, candidate links, language/theme switching, and recovery.
 
-Never represent an unavailable feature as working. A page skeleton does not establish questionnaire, scoring, or result rules.
+Automated timing does not validate the estimated 7–10-minute completion claim. Scientific validation remains a separate research task.

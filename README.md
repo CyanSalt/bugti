@@ -24,11 +24,13 @@ Each group includes four types. Control types are grouped by Reasoning/Experimen
 
 ## Using BUGTI
 
-Explore the four dimensions on the home page, or open **Personality types** to compare all sixteen characters. On desktop, select a type from the grouped list to read its profile in the adjacent panel. On mobile, expand a type in place. Classification details are available on demand. Use the language menu to switch between Simplified Chinese and English, and the theme button to choose light or dark mode.
+Start on the home page to learn what BUGTI explores. Its **Four dimensions** and **16 personalities** introductions link to their respective pages. The **Personality types** navigation menu provides the same two destinations. On desktop, select a type from the grouped list to read its profile in the adjacent panel. On mobile, expand a type in place. Classification details are available on demand. Use the language menu to switch between Simplified Chinese and English, and the theme button to choose light or dark mode.
 
 ## Current availability
 
-The website foundation is ready, including the home page, dimension explanations, sixteen personality introductions, and an About page. **The questionnaire is not open yet.** The test entry explains this status, and the results page does not display fabricated scores or personality reports.
+Choose **Start test** on the home page to answer 32 statements, with an estimated completion time of 7–10 minutes. Imagine facing each situation, even without prior experience, and choose one of five agreement levels. Neutral means no overall preference. Use Previous to revise answers. Review your answers before opening the result. Unfinished answers are saved in the current browser tab and survive reloads.
+
+The result shows your dimension response indices and, when all dimensions are complete and non-tied, your descriptive four-letter type with a detailed profile. Ties retain compatible candidates. Earlier questionnaire links keep their original questions and scores; they do not become current test answers. **Copy result link** saves a link that can restore the answers and result without an account. The link contains readable answers, so share it only with people you want to see them. Local development links work on this computer; sharing across computers requires an accessible deployment.
 
 There is no public deployment or sign-in system at present.
 

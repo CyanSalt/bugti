@@ -7,6 +7,12 @@ import type { Personality } from '~/data/personalities'
 const { t } = useI18n({ useScope: 'global' })
 const groups = personalityGroups.map(group => ({ ...group, personalities: getPersonalitiesInGroup(group.id) }))
 const selected = ref<Personality>(personalities[0]!)
+const route = useRoute()
+function selectLinkedPersonality() {
+  const personality = personalities.find(personality => `#${personality.code}` === route.hash)
+  if (personality) selected.value = personality
+}
+watch(() => route.hash, selectLinkedPersonality, { immediate: true })
 const selectedGroup = computed(() => groups.find(group => group.personalities.some(type => type.code === selected.value.code))!)
 const showClassification = ref(false)
 const detail = useTemplateRef('detail')
@@ -42,24 +48,24 @@ useSeoMeta({
       <nav class="flex flex-wrap gap-2" :aria-label="t('typesPage.groupNavigation')">
         <UButton v-for="group in groups" :key="group.id" :to="`#group-${group.id}`" external color="neutral" variant="soft" :label="`${group.id} · ${t(`personalityGroups.${group.id}.title`)}`" :class="['whitespace-normal text-start', group.textClass]" />
       </nav>
-      <UButton color="neutral" variant="link" :label="t('typesPage.classification')" :aria-expanded="showClassification" aria-controls="classification" :trailing-icon="showClassification ? 'i-lucide-chevron-up' : 'i-lucide-chevron-down'" class="px-0" @click="showClassification = !showClassification" />
+      <UCollapsible v-model:open="showClassification" :unmount-on-hide="false" class="contents" :ui="{ content: 'w-full' }">
+        <UButton color="neutral" variant="link" :label="t('typesPage.classification')" :trailing-icon="showClassification ? 'i-lucide-chevron-up' : 'i-lucide-chevron-down'" class="px-0" />
+        <template #content>
+          <section id="classification" class="mt-5 border-y border-default py-5" aria-labelledby="code-order-title">
+            <h2 id="code-order-title" class="text-sm font-semibold text-highlighted">{{ t('typesPage.codeOrder') }}</h2>
+            <dl class="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-4">
+              <div v-for="dimension in dimensions" :key="dimension.id">
+                <dt class="text-sm text-toned">{{ t(`dimensions.${dimension.id}.title`) }}</dt>
+                <dd class="mt-1 font-semibold text-highlighted">{{ dimension.left.code }} / {{ dimension.right.code }}</dd>
+              </div>
+            </dl>
+            <p class="mt-4 max-w-3xl text-sm/7 text-toned">{{ t('typesPage.grouping') }}</p>
+          </section>
+        </template>
+      </UCollapsible>
     </div>
-    <UCollapsible v-model:open="showClassification" :unmount-on-hide="false">
-      <template #content>
-        <section id="classification" class="mt-5 border-y border-default py-5" aria-labelledby="code-order-title">
-          <h2 id="code-order-title" class="text-sm font-semibold text-highlighted">{{ t('typesPage.codeOrder') }}</h2>
-          <dl class="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-4">
-            <div v-for="dimension in dimensions" :key="dimension.id">
-              <dt class="text-sm text-toned">{{ t(`dimensions.${dimension.id}.title`) }}</dt>
-              <dd class="mt-1 font-semibold text-highlighted">{{ dimension.left.code }} / {{ dimension.right.code }}</dd>
-            </div>
-          </dl>
-          <p class="mt-4 max-w-3xl text-sm/7 text-toned">{{ t('typesPage.grouping') }}</p>
-        </section>
-      </template>
-    </UCollapsible>
 
-    <div class="mt-8 grid items-start gap-10 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] xl:gap-16">
+    <UPageGrid class="mt-8 items-start gap-10 sm:grid-cols-1 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] xl:gap-16">
       <div class="min-w-0 space-y-10">
         <section v-for="group in groups" :id="`group-${group.id}`" :key="group.id" :aria-labelledby="`heading-${group.id}`">
           <div class="mb-4 flex items-baseline gap-3 border-b border-default pb-3">
@@ -98,6 +104,6 @@ useSeoMeta({
           </div>
         </UCard>
       </aside>
-    </div>
+    </UPageGrid>
   </UContainer>
 </template>

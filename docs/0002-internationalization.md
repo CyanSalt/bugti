@@ -16,7 +16,7 @@ Page copy, dimension explanations, navigation, accessibility labels, SEO metadat
 - `app/components/LanguageSwitcher.vue` uses a Nuxt UI dropdown menu and displays language names in their own language.
 - `@intlify/unplugin-vue-i18n` precompiles JSON messages during the build.
 
-The selected language is stored in the `bugti-locale` cookie for one year, with path `/` and `SameSite=Lax`. The server-rendered page and client hydration use the same cookie value. Missing or unsupported values fall back to `zh-CN`.
+The selected language is stored in the `bugti-locale` cookie for one year, with path `/` and `SameSite=Lax`. A valid result query on `/result` or `/test` embeds its language in the packed token and initializes the per-request instance before rendering; the same token initializes client hydration. Otherwise the cookie is used, with unsupported or missing values falling back to `zh-CN`. Language changes are saved immediately, including a language restored from a result link.
 
 Do not share mutable locale state across SSR requests or replace the server-visible cookie with client-only persistence.
 

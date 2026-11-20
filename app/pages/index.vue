@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { dimensions } from '~/data/dimensions'
 import { useI18n } from 'vue-i18n'
+import { questions } from '~/data/questionnaire'
 
 const { t } = useI18n({ useScope: 'global' })
 useSeoMeta({
-  ogDescription: () => t('home.title'),
+  description: () => t('home.description'),
+  ogDescription: () => t('home.description'),
 })
 </script>
 
@@ -22,43 +23,41 @@ useSeoMeta({
     >
       <template #links>
         <div class="flex flex-col items-center gap-4">
-          <div class="flex flex-wrap justify-center gap-3">
-            <UButton id="test-entry" to="/test" :label="t('common.testEntry')" trailing-icon="i-lucide-arrow-right" size="xl" />
-            <UButton to="#dimensions" external :label="t('home.explore')" color="neutral" variant="outline" size="xl" />
-          </div>
-          <p class="flex max-w-md items-start justify-center gap-2 text-sm text-muted">
-            <UIcon name="i-lucide-construction" class="mt-0.5 size-4 shrink-0" />
-            <span>{{ t('home.pending') }}</span>
+          <UButton id="test-entry" to="/test" :label="t('common.testEntry')" trailing-icon="i-lucide-arrow-right" size="xl" />
+          <p class="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-sm text-toned">
+            <span class="inline-flex items-center gap-2"><UIcon name="i-lucide-list-checks" class="size-4" />{{ t('home.testCount', { count: questions.length }) }}</span>
+            <span class="inline-flex items-center gap-2"><UIcon name="i-lucide-clock-3" class="size-4" />{{ t('home.testDuration') }}</span>
           </p>
         </div>
       </template>
     </UPageHero>
 
-    <UContainer>
-      <div class="grid grid-cols-2 gap-4 rounded-xl bg-primary/10 px-5 py-6 sm:grid-cols-4 sm:px-8" :aria-label="t('home.pairsLabel')">
-        <div v-for="dimension in dimensions" :key="dimension.id" class="text-center">
-          <p class="text-xl font-bold tracking-wide text-primary sm:text-2xl">{{ dimension.left.code }} / {{ dimension.right.code }}</p>
-          <p class="mt-1.5 text-sm text-toned">{{ t(`dimensions.${dimension.id}.title`) }}</p>
-        </div>
-      </div>
-    </UContainer>
-
-    <UPageSection
-      id="dimensions"
-      :title="t('home.dimensionsTitle')"
-      :description="t('home.dimensionsDescription')"
-      :ui="{
-        container: 'py-14 sm:py-20 gap-8 sm:gap-10',
-        title: 'text-2xl sm:text-3xl',
-        description: 'text-base/7',
-      }"
-    >
-      <UPageGrid class="lg:grid-cols-2">
-        <DimensionCard v-for="dimension in dimensions" :key="dimension.id" :dimension="dimension" />
+    <UContainer class="pb-14 sm:pb-20">
+      <USeparator class="mb-10 sm:mb-12" />
+      <UPageGrid class="gap-10 sm:grid-cols-1 lg:grid-cols-2 lg:gap-16">
+        <UPageCard
+          :as="{ root: 'section', title: 'h2' }"
+          :title="t('common.dimensions')"
+          :description="t('home.dimensionsDescription')"
+          variant="naked"
+          :ui="{ title: 'text-2xl sm:text-3xl', description: 'mt-4 text-base/7 text-toned', footer: 'pt-6' }"
+        >
+          <template #footer>
+            <UButton to="/dimensions" :label="t('common.exploreDimensions')" color="neutral" variant="link" trailing-icon="i-lucide-arrow-right" size="lg" class="px-0" />
+          </template>
+        </UPageCard>
+        <UPageCard
+          :as="{ root: 'section', title: 'h2' }"
+          :title="t('common.personalityTypes')"
+          :description="t('home.personalitiesDescription')"
+          variant="naked"
+          :ui="{ title: 'text-2xl sm:text-3xl', description: 'mt-4 text-base/7 text-toned', footer: 'pt-6' }"
+        >
+          <template #footer>
+            <UButton to="/personality-types" :label="t('home.explorePersonalities')" color="neutral" variant="link" trailing-icon="i-lucide-arrow-right" size="lg" class="px-0" />
+          </template>
+        </UPageCard>
       </UPageGrid>
-      <div class="flex justify-center">
-        <UButton to="/personality-types" :label="t('common.personalityTypes')" trailing-icon="i-lucide-arrow-right" size="lg" />
-      </div>
-    </UPageSection>
+    </UContainer>
   </div>
 </template>

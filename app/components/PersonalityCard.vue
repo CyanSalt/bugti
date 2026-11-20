@@ -11,6 +11,10 @@ const props = defineProps<{
 const emit = defineEmits<{ select: [personality: Personality] }>()
 const { t } = useI18n({ useScope: 'global' })
 const open = ref(false)
+const route = useRoute()
+watch(() => route.hash, (hash) => {
+  if (hash === `#${props.personality.code}`) open.value = true
+}, { immediate: true })
 </script>
 
 <template>

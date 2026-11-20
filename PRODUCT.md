@@ -22,16 +22,19 @@ The product name is **BUGTI**. Its user-facing description is **Programmer Perso
 
 ## Capabilities and Constraints
 
-The implemented scope is the website foundation:
+The implemented scope includes the website foundation and an exploratory questionnaire:
 
-- A concise home page and explanations of four dimensions.
-- A test entry that explicitly states the questionnaire is unavailable.
-- An empty results page without sample scores or fabricated reports.
+- A concise home page introducing BUGTI, with a **Start test** action, 32-question count, and an estimated 7–10-minute duration.
+- A dedicated `/dimensions` page with four preference-pair summaries and explanations.
+- A `/test` flow with instructions, one statement at a time, five required agreement levels, hypothetical-scenario instructions, previous/next navigation, and answer review.
+- Versioned, tab-local draft recovery after reload; a fresh-test action and restoration of answers for editing from result links.
+- A `/result` page with actual response-based dimension scores, descriptive personality profiles, practical trade-offs, and collaboration notes. Exact ties do not assign a fabricated single type; incomplete or invalid current answer sets cannot generate a result.
+- Copyable result links that restore answers, scores, and the same descriptive type without an account or database.
 - An About page explaining the test's purpose and how preferences evolve.
 - A `/personality-types` directory with sixteen approved archetypes and bilingual profiles: grouped choices with a sticky reading panel on desktop, inline expansion on mobile, and classification details on demand.
 - Responsive layouts, light and dark themes, and Simplified Chinese and English.
 
-Locale selection preserves URLs and is saved in a cookie. No questionnaire, answering flow, scoring, accounts, database, domain, or public deployment is implemented.
+Locale selection preserves URLs and is saved in a cookie. The questionnaire uses BUGTI-Q3 content and BUGTI-S1 scoring. There are no accounts, database, domain, or public deployment. Drafts use session storage in the current tab. Result links use a query parameter with three-bit packed answers, a version/locale header, and a compact checksum, encoded as 19 Base64URL characters. Whoever has a link can read its answers; the query can also appear in server logs. The checksum detects accidental corruption, not deliberate alteration or authenticity. See [Questionnaire implementation](docs/0004-questionnaire-implementation.md).
 
 ## Dimensions
 
@@ -75,7 +78,7 @@ Aesthetics refers to code and design quality rather than visual decoration. Neit
 
 ## Brand Commitments
 
-Use the BUGTI name and the Programmer Personality Test description. Keep a concise test entry with dimension explanations below it, using native Nuxt UI components and styling.
+Use the BUGTI name and the Programmer Personality Test description. Keep the home page focused on the product's purpose and test availability, with clear routes to personality types and a dedicated dimensions page. Use native Nuxt UI components and styling.
 
 ## Evidence on Hand
 
@@ -104,6 +107,10 @@ The four browsing groups first split by Control/Delegation. Control types split 
 
 Stable codes and group membership are maintained in `app/data/personalities.ts`; approved Chinese names and all user-facing descriptions are maintained in `app/locales/`. The directory uses the same content intended for future result explanations, without assigning users a result.
 
+## Questionnaire content specification
+
+[Questionnaire content and scoring](docs/0003-questionnaire-and-scoring.md) defines BUGTI-Q3 content and BUGTI-S1 scoring: 32 original bilingual, hypothetical scenario statements, five fully labeled agreement categories, eight equal-weight items per dimension, required answers and explicit tie handling, and empirical validation requirements. The exploratory answering and result flow implements this convention; scientific validity and the completion-time estimate remain unverified.
+
 ## Open decisions
 
-The formal questionnaire, question count, scoring, tie handling, result persistence, and deployment target remain undecided. Do not infer these rules from the current page skeleton.
+Questionnaire validation, empirical confirmation of the response format and completion time, long-term/server-side result persistence, and the deployment target remain open. The implemented content and scoring convention require independent review and real-sample validation before any scientific-validity claims.

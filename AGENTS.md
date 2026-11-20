@@ -3,7 +3,8 @@
 ## Project constraints
 
 - Write code, comments, and unit tests in **English**. Keep localized UI strings in `app/locales/*.json`, including native language labels; do not hardcode Chinese text in source or tests.
-- Use Nuxt 4, Nuxt UI 4, TypeScript, and vue-i18n. Reuse Nuxt UI components and their native design language.
+- Use Nuxt 4, Nuxt UI 4, TypeScript, and vue-i18n.
+- **Nuxt UI first:** Before building UI, check the installed Nuxt UI components and prefer their native layouts, controls, and interaction behavior. Compose them through props, slots, and `ui`; do not reimplement an available component with custom markup, CSS, or state handling. Keep custom components limited to product-specific composition or behavior that Nuxt UI does not provide, and retain its native design language.
 - Use **pnpm only**, at the version pinned in `package.json`. Keep `pnpm-lock.yaml`; do not introduce npm or Yarn lockfiles.
 - Product scope and open decisions are maintained in `PRODUCT.md`. Do not treat unavailable questionnaire or scoring features as implemented.
 - Preserve dimension order and codes: **C/D, F/G, R/E, U/A**. Stable identifiers belong in `app/data/dimensions.ts`; translatable copy belongs in `app/locales/`.

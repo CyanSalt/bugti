@@ -2,32 +2,35 @@
 import { useI18n } from 'vue-i18n'
 
 const { t } = useI18n({ useScope: 'global' })
+const personalityLinks = computed(() => [
+  { label: t('common.dimensions'), to: '/dimensions' },
+  { label: t('common.personalityTypes'), to: '/personality-types' },
+])
+const mobileLinks = computed(() => [
+  { label: t('common.home'), to: '/' },
+  { label: t('common.personalityNavigation'), children: personalityLinks.value },
+])
 </script>
 
 <template>
   <UHeader :ui="{ root: 'bg-default', container: 'gap-2' }">
     <template #left>
-      <NuxtLink to="/" :aria-label="t('common.homeLabel')" class="flex shrink-0 items-center gap-2.5 text-highlighted">
+      <ULink to="/" :aria-label="t('common.homeLabel')" class="flex shrink-0 items-center gap-2.5 text-highlighted">
         <UIcon name="i-lucide-bug" class="size-7 text-primary" />
         <span class="text-xl font-extrabold tracking-tight">BUGTI</span>
-      </NuxtLink>
+      </ULink>
     </template>
 
     <template #right>
-      <UButton to="/personality-types" :label="t('common.personalityTypes')" color="neutral" variant="ghost" class="hidden sm:inline-flex" />
-      <UButton to="/#dimensions" :label="t('common.dimensions')" color="neutral" variant="ghost" class="hidden lg:inline-flex" />
-      <UButton to="/about" :label="t('common.about')" color="neutral" variant="ghost" />
+      <UDropdownMenu :items="personalityLinks" :content="{ align: 'end' }">
+        <UButton :label="t('common.personalityNavigation')" trailing-icon="i-lucide-chevron-down" color="neutral" variant="ghost" class="hidden sm:inline-flex" />
+      </UDropdownMenu>
       <LanguageSwitcher />
       <UColorModeButton />
     </template>
 
     <template #body>
-      <div class="flex flex-col gap-2">
-        <UButton to="/" :label="t('common.home')" color="neutral" variant="ghost" block />
-        <UButton to="/personality-types" :label="t('common.personalityTypes')" color="neutral" variant="ghost" block />
-        <UButton to="/#dimensions" :label="t('common.dimensions')" color="neutral" variant="ghost" block />
-        <UButton to="/about" :label="t('common.aboutBugti')" color="neutral" variant="ghost" block />
-      </div>
+      <UNavigationMenu :items="mobileLinks" orientation="vertical" class="w-full" />
     </template>
   </UHeader>
 </template>
