@@ -10,6 +10,7 @@ const route = useRoute()
 const answerError = ref(false)
 const restoringError = ref(false)
 const submitting = ref(false)
+const autoAdvance = ref(false)
 const questionHeading = useTemplateRef('questionHeading')
 const reviewHeading = useTemplateRef('reviewHeading')
 let questionAnimation: Animation | undefined
@@ -29,6 +30,7 @@ const currentAnswer = computed({
     if (!isAnswer(answer) || !question.value) return
     draft.value.answers[draft.value.step] = answer
     answerError.value = false
+    if (autoAdvance.value) goTo(draft.value.step + 1)
   },
 })
 
@@ -82,6 +84,7 @@ function restart() {
   reset()
   restoringError.value = false
   answerError.value = false
+  autoAdvance.value = false
   if (Object.keys(route.query).length) void navigateTo('/test', { replace: true })
 }
 
@@ -169,9 +172,12 @@ useSeoMeta({ title: () => t('test.pageTitle'), robots: 'noindex, nofollow' })
           <div v-if="answered === questions.length && draft.step < questions.length - 1" class="mt-5 flex justify-end">
             <UButton type="button" color="neutral" variant="link" :label="t('test.review')" @click="goTo(questions.length)" />
           </div>
-          <div class="mt-8 flex items-center justify-between gap-4">
+          <div class="mt-8 flex items-end justify-between gap-4 sm:items-center">
             <UButton type="button" color="neutral" variant="outline" :disabled="draft.step === 0" icon="i-lucide-arrow-left" :label="t('test.previous')" size="lg" @click="goTo(draft.step - 1)" />
-            <UButton type="submit" trailing-icon="i-lucide-arrow-right" :label="t(draft.step === questions.length - 1 ? 'test.review' : 'test.next')" size="lg" />
+            <div class="flex flex-col items-end gap-3 sm:flex-row sm:items-center sm:gap-5">
+              <USwitch v-model="autoAdvance" :label="t('test.autoNext')" size="sm" />
+              <UButton type="submit" trailing-icon="i-lucide-arrow-right" :label="t(draft.step === questions.length - 1 ? 'test.review' : 'test.next')" size="lg" />
+            </div>
           </div>
         </form>
       </div>

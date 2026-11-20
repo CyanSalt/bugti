@@ -37,7 +37,7 @@ Keep the shared brand, language, and theme controls. About remains in the footer
 
 ## Test composition
 
-Use a bounded reading width. Put actual answered progress and Start over above the current statement. Show labeled native radio cards vertically so long translations remain legible and the disagreement-to-agreement order never changes. The instructions ask respondents to imagine unfamiliar situations and choose their preference. Neutral is the valid midpoint; there is no skip choice. Put Previous and Next after the options; do not auto-advance on selection. Review lists all answers with editing controls and a View my result action.
+Use a bounded reading width. Put actual answered progress and Start over above the current statement. Show labeled native radio cards vertically so long translations remain legible and the disagreement-to-agreement order never changes. The instructions ask respondents to imagine unfamiliar situations and choose their preference. Neutral is the valid midpoint; there is no skip choice. Put Previous and Next after the options. A native Auto-advance switch beside Next defaults to off; when enabled, selecting a response moves to the next question, with the final response opening review rather than submitting a result. Keep manual navigation available. Review lists all answers with editing controls and a View my result action.
 
 Question changes focus the heading and use a bounded, cancellable settling animation without dimming the whole view. Storage unavailability is explicitly described. No minimum completion-time rule or misleading progress timer is used.
 

@@ -77,7 +77,8 @@ The base radius is 8px and cards use the Nuxt UI 16px radius. Use `UBadge` for s
 - `UPageSection`, `UPageGrid`, and `UPageCard`: Dimension explanations using the shared theme.
 - `UButton`: Solid primary actions, outline secondary actions, and ghost navigation.
 - `UEmpty`: Missing or invalid result links and error states with actionable recovery.
-- `URadioGroup`: Native card-style agreement options; no preselected answer and explicit Next navigation.
+- `URadioGroup`: Native card-style agreement options; no preselected answer and explicit Next navigation by default.
+- `USwitch`: Optional Auto-advance beside Next, off by default.
 - `UProgress`: Actual answered-item progress and dimension response indices, never a fabricated confidence score.
 - `UInput`: Read-only, selectable result URL with manual-copy fallback.
 - `UAlert`: Product limitations.

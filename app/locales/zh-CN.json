@@ -51,6 +51,7 @@
     "progressLabel": "答题进度",
     "previous": "上一题",
     "next": "下一题",
+    "autoNext": "自动下一题",
     "review": "检查答案",
     "chooseAnswer": "请选择一个答案后继续。",
     "reviewTitle": "答案已准备好",

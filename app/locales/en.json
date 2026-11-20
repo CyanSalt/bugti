@@ -51,6 +51,7 @@
     "progressLabel": "Questionnaire progress",
     "previous": "Previous",
     "next": "Next",
+    "autoNext": "Auto-advance",
     "review": "Review answers",
     "chooseAnswer": "Choose a response to continue.",
     "reviewTitle": "Your answers are ready",

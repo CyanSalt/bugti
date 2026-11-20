@@ -53,7 +53,7 @@ Copy result link remains a single toolbar action; there is no dedicated saving s
 
 ## Interaction and accessibility
 
-Nuxt UI owns radio semantics, focus behavior, card selection, progress, buttons, collapsible disclosure, and input controls. No custom radio widget or fake progress timer is added. Next is explicit rather than auto-advancing on selection, so keyboard selection can be adjusted before moving on.
+Nuxt UI owns radio semantics, focus behavior, card selection, progress, buttons, switches, collapsible disclosure, and input controls. No custom radio widget or fake progress timer is added. Next remains explicit by default. An Auto-advance switch beside Next is initially off; enabling it advances once after a valid answer selection, including keyboard selection. Changing the switch, restoring answers, and revisiting an answered question do not advance by themselves. The last selection opens answer review, never submits the result automatically. The switch is page-local, resets when starting over or reopening the page, and is not stored in drafts or result links.
 
 Page replacement is not gated by a CSS leave transition. A cancellable 140ms settling animation runs on the new page shell after route completion, with a bounded timer and reduced-motion support. Question changes use a similar 180ms settling animation. This avoids leaving users stuck on the previous page when browser animation completion is delayed.
 
@@ -73,4 +73,4 @@ corepack pnpm build
 
 The questionnaire suite covers approved translations, stable coverage, all sixteen extreme type vectors, ties, missing answers, small directional scores, the documented worked example, URL round trips, corruption, duplicate fields, unsupported versions, codes 5–7, historical result preservation, draft version isolation, and both locales.
 
-Browser checks must cover Start test, required answers, previous/edit navigation, fresh-test reset, draft recovery, all 32 steps, review and finish, typed/tied results and historical incomplete results, copy feedback, reopening result links, editing restored answers, invalid links, language/theme changes, and responsive layout. Completion-time validity still requires real-sample research; automated completion is not timing evidence.
+Browser checks must cover Auto-advance off/on toggling, no navigation from toggling alone, one-step selection navigation, keyboard selection, last-answer review without auto-submission, reset/reload defaults, Start test, required answers, previous/edit navigation, fresh-test reset, draft recovery, all 32 steps, review and finish, typed/tied results and historical incomplete results, copy feedback, reopening result links, editing restored answers, invalid links, language/theme changes, and responsive layout. Completion-time validity still requires real-sample research; automated completion is not timing evidence.
