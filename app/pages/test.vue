@@ -140,7 +140,6 @@ useSeoMeta({ title: () => t('test.pageTitle'), robots: 'noindex, nofollow' })
         </ul>
         <UAlert v-if="restoringError" color="warning" variant="soft" :description="t('test.linkInvalid')" />
         <UButton size="xl" block trailing-icon="i-lucide-arrow-right" :label="t('test.begin')" @click="begin" />
-        <p class="text-sm/6 text-muted">{{ t('test.limitation') }}</p>
       </UCard>
     </section>
 

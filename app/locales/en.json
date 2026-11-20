@@ -2,7 +2,7 @@
   "nativeName": "English",
   "common": {
     "siteTitle": "BUGTI · Programmer Personality Test",
-    "siteDescription": "We all write code. What's your type? Explore your preferences in control, constraints, cognition, and values.",
+    "siteDescription": "BUGTI Programmer Personality Test: understand how you share control, set rules, form judgments, and decide how much time to invest in code.",
     "home": "Home",
     "homeLabel": "BUGTI home",
     "about": "About",
@@ -20,32 +20,31 @@
   },
   "home": {
     "title": "We all write code. What's your type?",
-    "description": "BUGTI is a programmer personality test about coding preferences. Discover how you like to write code and what drives your choices.",
-    "dimensionsDescription": "Control, constraints, cognition, and values describe four trade-offs behind your technical choices. Explore each preference pair to understand what shapes your coding habits.",
-    "personalitiesDescription": "Four dimensions combine into 16 approaches to code. From the Philosopher to the Doer, meet familiar characters and explore how different programmers think and act.",
+    "description": "BUGTI is a programmer personality test that helps you understand your coding habits and what matters to you when making technical choices.",
+    "dimensionsDescription": "Which mechanisms do you want to control? How much should the rules decide upfront? Four dimensions describe the trade-offs behind your technical choices.",
+    "personalitiesDescription": "From the Philosopher to the Doer, four dimensions combine into 16 approaches to code. See how different types think and act.",
     "explorePersonalities": "Meet the 16 personalities",
     "testCount": "{count} questions",
-    "testDuration": "About 7–10 minutes"
+    "testDuration": "About 7 to 10 minutes"
   },
   "dimensionsPage": {
     "pageTitle": "Four dimensions · BUGTI",
-    "title": "Four trade-offs. Your coding preferences.",
-    "description": "Explore control, constraints, cognition, and values. Each dimension describes two valid preferences; the four letters combine into a personality type.",
+    "title": "What matters to you in a technical choice?",
+    "description": "Control, constraints, cognition, and values describe how you make technical choices. One letter from each dimension forms a personality type.",
     "pairsLabel": "Four preference pairs in order: C/D, F/G, R/E, U/A"
   },
   "test": {
     "pageTitle": "Personality test · BUGTI",
     "title": "How do you like to write code?",
-    "description": "32 everyday coding decisions. Answer based on your own preferences.",
+    "description": "Imagine facing 32 coding situations and answer based on your own preferences.",
     "begin": "Begin answering",
     "continue": "Continue test",
     "restart": "Start over",
     "instructionsTitle": "Before you begin",
-    "instructionExperience": "Imagine facing each situation and choose how you would prefer to act, even if it has never happened to you. Assume you can carry out either approach.",
-    "instructionChoice": "Assume you have a reasonable choice and time to decide. Both approaches must meet necessary correctness, security, compliance, and reliability requirements.",
-    "instructionHonesty": "Answer for yourself, not your team’s mandatory rules. There are no right answers or better preferences.",
-    "instructionNeutral": "Choose Neutral when you understand the scenario but have no overall preference. It is a scored answer, not a skip option.",
-    "limitation": "For self-reflection. Not scientifically validated; not an assessment of engineering ability.",
+    "instructionExperience": "Imagine facing each situation and choose how you would prefer to act. You can answer without prior experience; assume you could carry out either approach.",
+    "instructionChoice": "Assume you have room to choose and time to decide. Both approaches must meet necessary correctness, security, compliance, and reliability requirements.",
+    "instructionHonesty": "Choose what you would personally prefer, assuming your team allows either approach.",
+    "instructionNeutral": "If you understand the situation but have no overall preference, choose Neutral. This answer counts toward your score.",
     "questionNumber": "Question {current} of {total}",
     "progress": "{answered} of {total} answered",
     "progressLabel": "Questionnaire progress",
@@ -54,18 +53,18 @@
     "autoNext": "Auto-advance",
     "review": "Review answers",
     "chooseAnswer": "Choose a response to continue.",
-    "reviewTitle": "Your answers are ready",
+    "reviewTitle": "Review your answers",
     "reviewDescription": "You can change any answer before viewing your result.",
     "viewResult": "View my result",
     "editAnswer": "Edit answer to question {number}",
     "answerLabel": "Your response",
-    "resumeNotice": "Your unfinished answers are saved in this browser tab.",
-    "storageUnavailable": "Draft saving is unavailable. Your answers remain available until you reload or close this page.",
+    "resumeNotice": "Your unfinished answers are saved in this browser tab. You can reload and continue.",
+    "storageUnavailable": "Your answers cannot be saved right now. You can keep answering, but reloading or closing this page will lose them.",
     "leaveTitle": "Leave this test?",
-    "leaveDescription": "Your answers stay in this tab. You can come back to continue.",
+    "leaveDescription": "Your answers stay in this tab, so you can come back and continue.",
     "leave": "Leave test",
     "stay": "Keep answering",
-    "linkInvalid": "The answers in this link could not be restored. Start a new test instead.",
+    "linkInvalid": "The answers in this link could not be restored. Please start a new test.",
     "answers": {
       "1": "Strongly disagree",
       "2": "Disagree",
@@ -77,71 +76,69 @@
   },
   "result": {
     "pageTitle": "Your coding preferences · BUGTI",
-    "title": "No result in this link",
-    "description": "Complete the test to generate a result link you can save and reopen.",
+    "title": "This link has no test result",
+    "description": "Complete the test, then copy and save your result link to view your answers and result later.",
     "loading": "Restoring your result…",
-    "invalidTitle": "This result link is invalid",
-    "invalidDescription": "The link may be incomplete or use an unsupported version. Copy the full original link or take the test again.",
+    "invalidTitle": "The result in this link could not be restored",
+    "invalidDescription": "The link may be incomplete or come from an unsupported version. Copy the full original link or take the test again.",
     "yourType": "Your programmer personality",
-    "yourProfile": "Your coding profile",
+    "yourProfile": "Your coding preferences",
     "dimensionsTitle": "Your four dimensions",
-    "scoreExplanation": "Scores summarize these answers on a 0–100 response index. They are not probabilities, rankings, or ability ratings.",
-    "balancedTitle": "Your preferences do not resolve to one type",
-    "balancedDescription": "At least one dimension is exactly balanced. Your complete dimensions still describe your choices.",
-    "incompleteTitle": "Some dimensions need more answers",
-    "incompleteDescription": "Earlier “Cannot judge” responses leave affected dimensions unscored. Take the current test for a complete set of hypothetical choices.",
-    "balanced": "Balanced",
+    "scoreExplanation": "Each dimension uses scores from 0 to 100 to describe your preferences in these answers. The two scores add up to 100.",
+    "balancedTitle": "Your answers fit more than one type",
+    "balancedDescription": "At least one dimension has equal scores on both sides, so the result matches multiple types.",
+    "incompleteTitle": "Some dimensions have too few answers",
+    "incompleteDescription": "The earlier version's Cannot judge answers are not scored, leaving those dimensions without scores. Complete the current test to see all four dimensions.",
+    "balanced": "Equal scores",
     "incomplete": "Not enough answers",
-    "answered": "{count} of 8 scored answers",
+    "answered": "{count} of 8 answers count toward the score",
     "leaning": "Leans toward {pole}",
-    "nearBoundary": "Close to the boundary",
-    "nearBoundaryHelp": "A different answer could shift this direction. Treat the type as a summary of these responses.",
+    "nearBoundary": "Scores are close",
+    "nearBoundaryHelp": "Changing answers could shift the preference to the other side.",
     "points": "{value} points",
     "scoreAccessible": "{left}: {leftScore} points; {right}: {rightScore} points",
     "copyLink": "Copy result link",
     "copied": "Link copied",
-    "copyFailed": "Copy manually from the field below.",
-    "linkLabel": "Restorable result link",
-    "shareDescription": "The link contains your answers. Anyone with it can read them; the encoded query may also appear in server logs.",
-    "localLink": "This address is local to your computer. Other people can use the link only after the site is deployed at an accessible address.",
-    "editAnswers": "Review / edit answers",
+    "copyFailed": "Automatic copying failed. Copy the link from the field below.",
+    "linkLabel": "Result link",
+    "shareDescription": "The link contains your answers, and anyone with it can read them. Encoded link parameters may also appear in server logs.",
+    "localLink": "This is a local address that other people cannot open. Sharing requires the site to be deployed at an accessible address.",
+    "editAnswers": "Edit answers",
     "retake": "Take the test again",
     "profileTitle": "How this type approaches code",
     "inPractice": "In everyday work",
-    "watchFor": "Trade-offs to notice",
+    "watchFor": "What to watch for",
     "collaboration": "Working with others",
-    "personalBreakdown": "What your answers suggest",
-    "candidatesTitle": "Types compatible with your balanced dimensions",
-    "allBalanced": "All four dimensions are balanced. There is no overall directional tilt to assign a type.",
+    "personalBreakdown": "How you might make technical choices",
+    "candidatesTitle": "Types that fit your answers",
+    "allBalanced": "Both sides have equal scores in all four dimensions. These answers show no overall preference.",
     "candidateLabel": "Read the profile of {name} ({code})",
-    "viewAnswers": "Review the 32 answers",
-    "patternBoth": "You endorsed approaches on both sides on average.",
-    "patternNeither": "You disagreed with approaches on both sides on average.",
-    "patternNeutral": "Neither side has an average agreement direction.",
-    "patternNote": "This response pattern can reflect different situations; it does not establish an inconsistent personality.",
+    "viewAnswers": "View all 32 answers",
+    "patternBoth": "On average, you agree with approaches on both sides.",
+    "patternNeither": "On average, you disagree with approaches on both sides.",
+    "patternNeutral": "Average agreement is neutral on both sides.",
     "poleMeans": "Average agreement: {left} {leftMean}/5 · {right} {rightMean}/5",
     "version": "Questionnaire {content} · Scoring {scoring}",
-    "limitation": "A reflection on your responses, not a scientifically validated assessment. Preferences can change with context and experience.",
-    "legacyNotice": "This is an earlier questionnaire result. It keeps the original statements and scores. Take the current test to answer hypothetical situations.",
+    "legacyNotice": "This is a result from an earlier questionnaire. Its questions and scoring are unchanged. Take the current test to answer hypothetical situations.",
     "legacyNeutral": "Neither agree nor disagree",
     "legacyUnknown": "Cannot judge (earlier version)"
   },
   "about": {
     "pageTitle": "About BUGTI · Programmer Personality Test",
-    "description": "A test about coding preferences.",
-    "purposeTitle": "What we want to understand",
-    "purpose": "Programmers can give different answers to the same technical problem. BUGTI explores the trade-offs behind those answers: who holds control, how much freedom to keep, how judgments are formed, and what is worth investing in.",
-    "limitsTitle": "Preferences evolve with experience",
-    "limits": "Projects, teams, and experience shape your choices. Use your four-letter type to reflect on your coding habits and discuss trade-offs with others.",
+    "description": "Understand your preferences when making technical choices.",
+    "purposeTitle": "The trade-offs behind technical choices",
+    "purpose": "Programmers can approach the same technical problem differently. BUGTI asks which mechanisms you want to control, how much freedom you want, how you form judgments, and why you choose to spend more time on code.",
+    "limitsTitle": "Preferences change with experience",
+    "limits": "Your choices depend on the project, team, and experience. A four-letter type can help you reflect on your coding habits and discuss trade-offs with others.",
     "explore": "Explore the four dimensions"
   },
   "error": {
     "notFoundPageTitle": "Page not found · BUGTI",
     "unavailablePageTitle": "Page unavailable · BUGTI",
     "notFoundTitle": "This page does not exist",
-    "notFoundDescription": "The link may be incorrect. You can return to the BUGTI home page.",
+    "notFoundDescription": "The link may be incorrect. Please return to the BUGTI home page.",
     "unavailableTitle": "This page is temporarily unavailable",
-    "unavailableDescription": "Return to the home page and try again. If the issue continues, please try later."
+    "unavailableDescription": "Return to the home page and try again. If it still will not open, try again later."
   },
   "dimensions": {
     "control": {
@@ -150,25 +147,25 @@
     },
     "constraints": {
       "title": "Constraints",
-      "question": "Freedom of expression or upfront guarantees?"
+      "question": "How much freedom do you keep, and which rules do you set upfront?"
     },
     "values": {
       "title": "Values",
-      "question": "What makes code worth investing in?"
+      "question": "What makes code worth more of your time?"
     },
     "cognition": {
       "title": "Cognition",
-      "question": "Where does a technical judgment begin?"
+      "question": "Where do you start when making a technical judgment?"
     }
   },
   "poles": {
     "C": {
       "label": "Control",
-      "description": "Keep mechanisms visible, explainable, and adjustable, accepting complexity in exchange for control."
+      "description": "See how mechanisms work and adjust them yourself, accepting more complexity to keep control."
     },
     "D": {
       "label": "Delegation",
-      "description": "Trust languages, frameworks, and platforms, saving effort for the problems that truly need you."
+      "description": "Let reliable languages, frameworks, and platforms handle general mechanisms, leaving time for problems you need to solve yourself."
     },
     "F": {
       "label": "Flexibility",
@@ -176,33 +173,33 @@
     },
     "G": {
       "label": "Guarantees",
-      "description": "Encode rules in types and models to make invalid states harder to create."
+      "description": "Put rules into types and models to restrict invalid states and operations upfront."
     },
     "U": {
       "label": "Utility",
-      "description": "Focus on benefits, costs, and maintenance. Extra investment needs a practical return."
+      "description": "Weigh benefits, costs, and maintenance. Extra work needs a practical return."
     },
     "A": {
       "label": "Aesthetics",
-      "description": "Value coherent structure and elegant expression, investing in the quality of the code itself."
+      "description": "Value consistent structure and precise, elegant expression, even when better code has no immediate return."
     },
     "R": {
       "label": "Reasoning",
-      "description": "Build a model first, using premises, causes, and boundaries to deduce why a solution works."
+      "description": "Build a model first, then use its assumptions, causes, and limits to work out why a solution holds."
     },
     "E": {
       "label": "Experimentation",
-      "description": "Start with prototypes, measurements, and observations, then revise judgments using actual results."
+      "description": "Start with a prototype or measurements, observe what happens, then revise your judgment."
     }
   },
   "typesPage": {
     "pageTitle": "Personality types · BUGTI",
-    "title": "16 personalities. 16 ways to approach code.",
-    "description": "Some ask why first. Others start by trying. Explore these familiar characters and see which feels like you when you write code.",
-    "codeOrder": "Four letters, four questions in order",
-    "grouping": "Start with Control (C) or Delegation (D). C splits by Reasoning (R) or Experimentation (E); D splits by Flexibility (F) or Guarantees (G). CR/CE use the first and third letters of the type code; DF/DG use the first two.",
+    "title": "16 ways to approach code",
+    "description": "Some prefer to ask why first; others like to try things. See how these types write code and which one feels like you.",
+    "codeOrder": "The order of the four-letter type code",
+    "grouping": "Start with Control (C) or Delegation (D). Control splits into CR and CE by Reasoning (R) or Experimentation (E). Delegation splits into DF and DG by Flexibility (F) or Guarantees (G). CR/CE use the first and third letters of the type code; DF/DG use the first two.",
     "classification": "How are the groups defined?",
-    "archive": "Personality archive",
+    "archive": "Personality profiles",
     "selectType": "Read the profile of {name} ({code})",
     "groupNavigation": "Jump to a personality group",
     "readMore": "Read description",
@@ -213,160 +210,160 @@
   "personalityGroups": {
     "CR": {
       "title": "Planners",
-      "description": "Keep key mechanisms in your hands and think through principles, boundaries, and structure first. Understand why an approach works, then put your judgment into the system."
+      "description": "Keep control of key mechanisms. Think through principles, boundaries, and structure before putting the approach into practice."
     },
     "CE": {
       "title": "Practitioners",
-      "description": "Keep critical parts adjustable and build judgment by working with them directly. Try, verify, and refine, letting actual feedback guide the next step."
+      "description": "Keep key mechanisms adjustable. Try them yourself to check effects and boundaries, then improve them based on feedback."
     },
     "DF": {
       "title": "Pioneers",
-      "description": "Use existing capabilities while keeping your route open. Choose, combine, or replace tools to find an approach that fits the goal and explore new possibilities."
+      "description": "Use existing tools while keeping your approach flexible. Combine or replace tools to find what suits the goal."
     },
     "DG": {
       "title": "Guardians",
-      "description": "Delegate general complexity to mature tools and rely on clear rules and guarantees. Let systems handle repetitive details so the parts work together reliably."
+      "description": "Leave general complexity to mature tools. Clear rules and guarantees handle repetitive details and help the parts work together reliably."
     }
   },
   "personalities": {
     "CFRU": {
       "name": "Philosopher",
       "summary": "Understand why first, then find a solution that makes sense and works.",
-      "description": "You tend to ask why first. You want to understand the key mechanisms before finding a way to solve the problem. Languages and techniques can vary, but the solution must make sense. Understanding principles helps you rely less on guesswork and keep more control.",
+      "description": "You tend to ask why and understand the key mechanisms before choosing a solution. Languages and techniques can vary, but the approach must make sense. Knowing the principles reduces guesswork and gives you more control over the implementation.",
       "inPractice": "You may trace a mechanism, outline an approach, then change only the parts needed for the goal.",
-      "watchFor": "A convincing model can still omit a real-world condition. Use small checks to challenge the assumptions.",
-      "collaboration": "Share the assumptions behind your choice, and ask a hands-on teammate to identify a useful first experiment."
+      "watchFor": "A convincing model can still miss a real condition. Small checks can help test its assumptions.",
+      "collaboration": "Explain the assumptions behind your choice and ask a hands-on teammate what to test first."
     },
     "CFRA": {
       "name": "Artist",
       "summary": "Master the mechanisms so your code can express your own ideas.",
-      "description": "You see programming as a way to express ideas. You want to understand the mechanisms and have enough freedom to organize code in your own way. Even after the feature works, you still care about precise expression, elegant structure, and whether the work reflects your intent.",
-      "inPractice": "You may design your own composition and refine the concepts until the implementation expresses your intent.",
-      "watchFor": "Personal expression can become costly for other maintainers. Check whether another person can follow the structure.",
-      "collaboration": "Explain the idea behind the design and agree on which refinements are worth the shared time."
+      "description": "You see programming as a way to express ideas. You want control over the mechanisms and freedom to organize code in your own way. After the feature works, you still care whether the code expresses your intent accurately and has an elegant structure.",
+      "inPractice": "You may combine parts in your own way and refine the concepts until the code expresses your intent.",
+      "watchFor": "Organizing code around your own habits can make maintenance harder for others. Ask another maintainer to try following the structure.",
+      "collaboration": "Explain the idea behind the design and agree on which details are worth the shared time."
     },
     "CFEU": {
       "name": "Engineer",
       "summary": "Adjust what you need and judge the tool by what it actually does.",
-      "description": "You treat programming as a tool for solving problems. You make changes when needed, try them in practice, and prefer to adjust the critical parts yourself. What matters is whether the tool meets the need. Once the problem is solved, you usually do not invest more just for the code's sake.",
-      "inPractice": "You may inspect a problem, try a local change, and keep the solution that demonstrably meets the need.",
-      "watchFor": "A local fix can leave wider interactions unexplored. Test the adjacent behavior before calling the task done.",
-      "collaboration": "Offer a reproducible example and a clear outcome, then invite review of the change boundary."
+      "description": "You treat programming as a tool for solving problems. You prefer to adjust key parts yourself and test the effects. Once the tool meets the need and the problem is solved, you usually stop investing solely in code quality.",
+      "inPractice": "You may inspect a problem, try a local change, and keep the solution that meets the need.",
+      "watchFor": "A local fix can affect other behavior. Check the surrounding interactions before finishing.",
+      "collaboration": "Provide a reproducible example and a clear result, then ask teammates to check which parts the change affects."
     },
     "CFEA": {
       "name": "Inventor",
       "summary": "Try new possibilities yourself and build something clever that feels right.",
-      "description": "You enjoy trying things yourself and turning ideas into something that runs. An existing implementation is rarely the end: you wonder how else it could be changed or combined. You enjoy the discoveries in experimentation and want the result to feel fresh, clever, and true to your idea.",
-      "inPractice": "You may experiment with mechanisms you can change and use discoveries to create a distinctive implementation.",
-      "watchFor": "Repeated experimentation can expand the task. Define when to stop exploring and choose an approach.",
-      "collaboration": "Show an early prototype and separate essential discoveries from optional refinements."
+      "description": "You enjoy trying things yourself and turning ideas into working code. With an existing implementation, you often keep testing changes or combinations. Discoveries make programming enjoyable and help you create something original that fits your idea.",
+      "inPractice": "You may experiment with mechanisms you can adjust and turn discoveries into an inventive implementation.",
+      "watchFor": "Continued experiments can expand the task. Agree on when to stop exploring and choose an approach.",
+      "collaboration": "Show an early prototype and separate essential discoveries from optional improvements."
     },
     "CGRU": {
       "name": "Goalkeeper",
       "summary": "Understand the boundaries and stop avoidable problems before they happen.",
-      "description": "You care about what may happen and what must be prevented. You think through the boundaries, then put the key rules into the parts you can control. You are willing to prepare more so the system has fewer surprises and problems are easier to handle when they arise.",
-      "inPractice": "You may map failure paths and encode key boundaries in code you directly maintain.",
-      "watchFor": "Preparing for every hypothetical failure can cost more than its benefit. Prioritize plausible, consequential cases.",
-      "collaboration": "Explain the risks each rule addresses and agree on which safeguards are necessary now."
+      "description": "You first work out which behaviors the system should allow and which problems it should prevent. Then you put the rules into code you control. You are willing to prepare more to reduce surprises and make later problems easier to handle.",
+      "inPractice": "You may map failure paths and put key boundaries into code you maintain yourself.",
+      "watchFor": "Preventing every imagined problem may cost more than it saves. Focus on cases that are likely and have a large impact.",
+      "collaboration": "Explain the risk behind each rule and agree on which guarantees are needed now."
     },
     "CGRA": {
       "name": "Architect",
-      "summary": "Give every concept a place and every rule a reason in a coherent whole.",
-      "description": "You want the system to have a clear, consistent structure. You want control over key mechanisms, a precise place for each concept, and a reason for every rule. Even when the system runs, ambiguity, duplication, and contradictions make you want to reorganize the design.",
-      "inPractice": "You may align the model, interfaces, and implementation so each concept has an explicit place.",
-      "watchFor": "A coherent structure may need several changes before a feature ships. Set a useful stopping point for the design.",
-      "collaboration": "Make the model visible and discuss which consistency rules are essential versus optional."
+      "summary": "Give every concept a place and every rule a reason in a consistent system.",
+      "description": "You want a clear, consistent system whose key mechanisms you can control. Each concept needs a precise place, and each rule needs a reason. Even when the system runs correctly, ambiguity, duplication, or contradictions make you want to reorganize the design.",
+      "inPractice": "You may check that the model, interfaces, and implementation agree and that each concept has a clear place.",
+      "watchFor": "Pursuing consistency can add changes before release. Agree on when the design is ready to ship.",
+      "collaboration": "Show the model and discuss which rules must stay consistent and which can be refined later."
     },
     "CGEU": {
       "name": "Inspector",
       "summary": "A guarantee still needs a hands-on check before you trust it.",
-      "description": "You like explicit guarantees and habitually check whether they hold. You test boundaries, observe behavior, and adjust critical details to see whether the system works as expected under real conditions. For you, it should be fine needs to become I tried it and it is fine.",
+      "description": "You like explicit guarantees and prefer to check them yourself. You test boundaries, observe behavior, and adjust key details to confirm that the system works as expected under real conditions.",
       "inPractice": "You may test explicit constraints and adjust the mechanisms where observations reveal a gap.",
-      "watchFor": "Passing checks cover the tested cases. Revisit assumptions when the surrounding system changes.",
-      "collaboration": "Share the boundary cases and distinguish observed behavior from guarantees not yet tested."
+      "watchFor": "Passing tests only confirm the cases checked. Revisit the assumptions when the surrounding system changes.",
+      "collaboration": "Share boundary cases and distinguish what you observed from guarantees you have not yet tested."
     },
     "CGEA": {
       "name": "Craftsperson",
       "summary": "Verify and refine by hand until correct work also feels well made.",
-      "description": "You want things to follow clear rules and every detail to be well considered. You like hands-on verification and repeated adjustment, continuing to refine after correctness is established. Accurate behavior, coherent structure, and clean expression are worth a little more time.",
-      "inPractice": "You may repeatedly verify and refine an implementation so its behavior and expression fit together.",
-      "watchFor": "Refinement can continue after the practical need is met. Agree on a finish line for the current iteration.",
-      "collaboration": "Use concrete examples in review and separate correctness fixes from craftsmanship improvements."
+      "description": "You want an implementation that follows clear rules, with care given to each detail. You like checking and adjusting it yourself. Even after the feature works correctly, you are willing to improve its behavior, structure, and expression.",
+      "inPractice": "You may repeatedly check and adjust an implementation until its behavior and expression agree.",
+      "watchFor": "You may want to keep refining after the practical need is met, so agree on completion criteria for the current iteration.",
+      "collaboration": "Use concrete examples in review and discuss correctness fixes separately from quality improvements."
     },
     "DFRU": {
       "name": "Planner",
-      "summary": "Work out the approach first, then use tools where they make effort count.",
-      "description": "You think through the goal and approach before deciding which tools to use. You do not want to take on work that existing capabilities can handle, and you adapt the implementation route as needed. You care about arranging your effort so it solves the problems that really matter.",
-      "inPractice": "You may compare approaches on paper, then compose existing tools around the actual goal.",
-      "watchFor": "A tool can fit the plan but hide an assumption. Check the contract before delegating the mechanism.",
-      "collaboration": "Explain why each tool belongs in the plan and keep replacement boundaries clear."
+      "summary": "Plan the approach, choose tools, and spend time where it helps.",
+      "description": "You think through the goal and approach before choosing tools. You prefer to use existing tools for work they can handle and change the implementation route as needed. You weigh how to use limited time to solve important problems.",
+      "inPractice": "You may compare approaches, then combine existing tools around the actual goal.",
+      "watchFor": "A tool may fit the plan but have conditions you have not considered. Check them before depending on it.",
+      "collaboration": "Explain each tool's role and which parts would be affected if you replaced it later."
     },
     "DFRA": {
       "name": "Director",
-      "summary": "Start with a vision and bring different tools together to express it.",
-      "description": "You like forming an overall idea, then bringing suitable tools and modules together. You do not need to handle every low-level detail yourself, but you want those capabilities to express your design accurately. You care about how the parts connect and whether the whole is clear and coherent.",
-      "inPractice": "You may begin with an overall idea and organize existing capabilities into a coherent expression.",
-      "watchFor": "The desired composition may differ from what a tool supports. Verify important extension points early.",
-      "collaboration": "Share the intended whole, then invite feedback on the connections between parts."
+      "summary": "Start with an overall idea, then combine tools to build the design.",
+      "description": "You like forming an overall idea before choosing tools and modules. Tools can handle low-level details, but the combined code should express your design accurately. You care about clear connections and a consistent whole.",
+      "inPractice": "You may start with an overall idea and combine existing tools to build the design.",
+      "watchFor": "The combination you want may exceed what a tool supports. Check important extension interfaces early.",
+      "collaboration": "Show the overall design, then ask teammates to check how its parts connect."
     },
     "DFEU": {
       "name": "Doer",
       "summary": "Try what works, change what doesn't, and focus on getting it done.",
-      "description": "You first ask whether the problem has been solved. You use what is available, try whichever approach works, and switch when it does not. You have little attachment to languages or technical routes and do not want complexity without a practical return. Getting it done is your most direct measure.",
-      "inPractice": "You may start with available tools, test a direct route, and change it when it stops serving the goal.",
-      "watchFor": "Frequent route changes can leave implicit assumptions. Record the choices future maintainers need.",
-      "collaboration": "Show what works, explain what remains uncertain, and agree on the next practical check."
+      "description": "You first ask whether the problem is solved. You try available tools and switch when they do not fit. You have little attachment to a language or technical approach; more time or complexity needs a practical return.",
+      "inPractice": "You may start with available tools, test a direct approach, and change it when it stops meeting the goal.",
+      "watchFor": "Frequent changes of approach can leave assumptions unexplained. Record the choices future maintainers need to know.",
+      "collaboration": "Show what works, explain what is still uncertain, and agree on what to test next."
     },
     "DFEA": {
       "name": "Explorer",
       "summary": "Try different tools and let the experience reveal new possibilities.",
-      "description": "You enjoy exploring new possibilities with different tools and often discover what you really want through trying. You are willing to change direction and welcome unexpected discoveries. Beyond whether it works, you want to see what new expression different combinations can create.",
-      "inPractice": "You may try different tools and combinations, then refine the expression around what you discover.",
-      "watchFor": "Interesting possibilities can pull you away from the goal. Separate exploration time from delivery time.",
-      "collaboration": "Share discoveries early and let teammates help choose which direction deserves further work."
+      "description": "You enjoy trying different tools and often discover what you want to build after getting started. Unexpected discoveries can make you change direction. Alongside making the feature work, you care about how different combinations let you express ideas.",
+      "inPractice": "You may try different tools and combinations, then adjust the design based on what you discover.",
+      "watchFor": "Interesting experiments can distract from the goal. Set aside separate time for exploration and delivery.",
+      "collaboration": "Share discoveries early so teammates can help decide which direction deserves more time."
     },
     "DGRU": {
       "name": "Steward",
       "summary": "Choose reliable tools and clear rules to make everyday work easier.",
-      "description": "You want to choose reliable tools, arrange the rules and responsibilities, and let things run steadily. You do not want to keep worrying about details the system can handle. You accept some constraints in exchange for fewer surprises, less maintenance, and an easier everyday routine.",
-      "inPractice": "You may choose a suitable platform, define dependable rules, and let it carry routine responsibility.",
-      "watchFor": "Stable defaults still have boundaries. Review them when requirements or dependencies change.",
-      "collaboration": "Clarify who owns each mechanism and make the expected operating rules easy to find."
+      "description": "You want reliable tools, clear rules and responsibilities, and a system that runs steadily. You prefer to leave routine details to the system and accept some constraints to reduce surprises and maintenance work.",
+      "inPractice": "You may choose a suitable platform, define operating rules, and let it handle routine work.",
+      "watchFor": "Stable defaults have limits. Check them again when requirements or dependencies change.",
+      "collaboration": "Clarify who maintains each mechanism and make the operating rules easy to find."
     },
     "DGRA": {
       "name": "Lawmaker",
       "summary": "Think the rules through and let machines enforce them consistently.",
-      "description": "You believe that once rules are clear, machines should enforce them strictly. Instead of relying on everyone to remember and comply, you prefer types, frameworks, and automated checks to block invalid approaches. You seek consistent order so individual improvisation has less influence on the system.",
-      "inPractice": "You may formalize a model and use established tools to apply its rules consistently.",
-      "watchFor": "Strict rules can make an emerging requirement difficult to express. Check whether the model needs to change.",
-      "collaboration": "Explain the reason for each constraint and provide a clear process for revising the rules."
+      "description": "You want machines to enforce rules once they are clear. Types, frameworks, and automated checks can block invalid behavior and reduce reliance on people remembering what to do. You value consistent rules and prefer to limit the effect of individual improvisation on the system.",
+      "inPractice": "You may define the model and rules first, then use established tools to enforce them consistently.",
+      "watchFor": "Strict rules can make new requirements hard to express. Check whether the model still fits.",
+      "collaboration": "Explain each constraint and how teammates can propose and make changes to the rules."
     },
     "DGEU": {
       "name": "Administrator",
-      "summary": "Use proven tools and real observations to keep solving problems reliably.",
-      "description": "You trust mature tools and clear rules, but ultimately judge actual behavior. You use testing and observation to confirm reliability, adjusting configuration or changing the solution when needed. You do not need control over every internal detail; you care about solving problems consistently over time.",
-      "inPractice": "You may verify mature tools against actual needs, then adjust configuration while preserving useful guarantees.",
-      "watchFor": "Observed stability can change under a new workload. Keep representative checks tied to the operating context.",
-      "collaboration": "Share the measurements behind choices and make configuration responsibilities explicit."
+      "summary": "Use established tools and real observations to keep solving problems reliably.",
+      "description": "You rely on mature tools and clear rules, then use tests and observations to check their reliability. When problems appear, you adjust configuration or switch approaches. Tools can handle internal details as long as they keep solving problems reliably.",
+      "inPractice": "You may test mature tools against actual needs and adjust configuration while keeping necessary guarantees.",
+      "watchFor": "New workloads can change system behavior. Keep tests close to actual operating conditions.",
+      "collaboration": "Share the measurements behind your choice and make clear who is responsible for configuration."
     },
     "DGEA": {
       "name": "Sound Engineer",
-      "summary": "Try and adjust until every part works in harmony with the others.",
-      "description": "You want mature tools to follow consistent rules and keep adjusting them through use. Each part working on its own is not enough: together, their interfaces should agree, their behavior should feel natural, and their details should not conflict. You seek a system whose parts fit just right.",
-      "inPractice": "You may use mature components and keep testing their interfaces until the combined system feels coherent.",
-      "watchFor": "Aligning every detail may require costly wrappers. Check whether the consistency benefit justifies another layer.",
-      "collaboration": "Show where interfaces disagree and agree on the conventions the whole system should share."
+      "summary": "Try and adjust until the parts have consistent interfaces and behavior.",
+      "description": "You want mature tools to follow shared rules and keep adjusting them through use. Their combined interfaces should be consistent, their behavior should feel natural, and their details should not conflict. You care about whether the parts form a coherent system.",
+      "inPractice": "You may use mature components and keep checking their interfaces so the combined system stays consistent.",
+      "watchFor": "Consistent details may require costly wrappers. Weigh the benefit against adding another layer.",
+      "collaboration": "Show where interfaces differ and agree on the rules the whole system should follow."
     }
   },
   "preferencePractice": {
-    "C": "You tend to keep key mechanisms visible and adjustable. In practice, you may prefer explicit wiring, configurable policies, or a locally maintained change when a tool hides important behavior.",
-    "D": "You tend to let suitable tools own general mechanisms. Existing modules, supported plugins, and managed build steps can leave you more room for business-specific work.",
-    "F": "You tend to retain composition and adjustment freedom. Open data objects, configurable processing, and checks at use sites can suit requirements that are still taking shape.",
-    "G": "You tend to encode permitted behavior upfront. Separate result types, constrained API methods, and explicit transitions can make the allowed paths visible in the code.",
-    "R": "You tend to build an explanation before choosing the first check. Call chains, cost estimates, and possible execution orders help you decide what evidence to gather.",
-    "E": "You tend to gather observations before deep analysis. Reproductions, small prototypes, and measurements help you decide what to investigate next.",
-    "U": "You tend to tie extra work to a practical need. New requirements, repeated edits, and migration costs influence when you refactor, extract a helper, or preserve an existing interface.",
-    "A": "You tend to value coherent concepts and expression in their own right. Clear responsibilities, precise names, and consistent internal implementations can justify additional effort."
+    "C": "You tend to keep control of key mechanisms. You might write module connections explicitly, configure operating policies yourself, or maintain a necessary library change.",
+    "D": "You tend to let suitable tools handle general mechanisms. Existing modules, supported plugins, or build platforms can leave more time for specific business problems.",
+    "F": "You tend to keep freedom to combine and adjust things. While requirements are changing, you might use objects with adjustable fields or configurable workflows and leave some checks until use.",
+    "G": "You tend to define allowed behavior upfront. You might separate result types, restrict API parameters, or list permitted state transitions.",
+    "R": "You tend to form an explanation before choosing a test. Following call chains, estimating costs, or reasoning through execution orders helps you decide what evidence to gather next.",
+    "E": "You tend to observe actual behavior before deeper analysis. After reproducing a problem, building a small prototype, or taking measurements, you decide what to investigate.",
+    "U": "You tend to invest when there is a practical need. New requirements, repeated edits, and migration costs influence when you refactor, extract a shared function, or preserve an existing API.",
+    "A": "You value the quality of concepts and expression themselves. You may spend extra time clarifying responsibilities, choosing precise names, and keeping internal implementations consistent."
   },
   "questions": {
     "Q01": "When two frameworks both meet my needs, I would prefer the one with an inspectable request-handling process, even if setup takes more steps.",

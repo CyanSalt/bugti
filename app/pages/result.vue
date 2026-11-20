@@ -135,8 +135,7 @@ useSeoMeta({ title: () => t('result.pageTitle'), robots: 'noindex, nofollow', re
           </ol>
         </template>
       </UCollapsible>
-      <p class="mt-6 text-xs/6 text-muted">{{ t('result.limitation') }}</p>
-      <p class="mt-2 text-xs/6 text-muted">{{ t('result.version', { content: link.status === 'valid' ? link.version : questionnaireVersion, scoring: scoringVersion }) }}</p>
+      <p class="mt-6 text-xs/6 text-muted">{{ t('result.version', { content: link.status === 'valid' ? link.version : questionnaireVersion, scoring: scoringVersion }) }}</p>
     </div>
   </UContainer>
   </div>
