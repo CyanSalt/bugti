@@ -12,10 +12,10 @@ const group = computed(() => personalityGroups.find(group => group.poles.every(p
 <template>
   <UCard :ui="{ body: 'p-6 sm:p-9' }">
     <div class="flex items-start justify-between gap-5">
-      <div>
-        <p class="text-sm font-medium text-muted">{{ t('result.yourType') }}</p>
-        <h1 :class="['mt-3 text-4xl font-bold sm:text-5xl', group.textClass]">{{ t(`personalities.${code}.name`) }}</h1>
-        <p class="mt-3 text-lg font-semibold tracking-widest text-highlighted">{{ code }}</p>
+      <div class="min-w-0 flex-1">
+        <p :class="['text-sm font-medium', group.mutedClass]">{{ t('result.yourType') }}</p>
+        <h1 :class="['mt-3 text-3xl/tight font-bold text-balance break-words sm:text-4xl/tight', group.textClass]">{{ t(`personalities.${code}.name`) }}</h1>
+        <p :class="['mt-3 text-lg font-semibold tracking-widest', group.mutedClass]">{{ code }}</p>
       </div>
       <UIcon :name="personality.icon" :class="['mt-6 size-12 shrink-0 sm:size-16', group.textClass]" aria-hidden="true" />
     </div>
@@ -24,7 +24,7 @@ const group = computed(() => personalityGroups.find(group => group.poles.every(p
     <USeparator class="my-7" />
     <div class="space-y-6">
       <section v-for="key in ['inPractice', 'watchFor', 'collaboration']" :key="key">
-        <h2 class="text-sm font-semibold text-highlighted">{{ t(`result.${key}`) }}</h2>
+        <h2 class="text-lg font-semibold text-highlighted">{{ t(`result.${key}`) }}</h2>
         <p class="mt-2 text-base/8 text-toned">{{ t(`personalities.${code}.${key}`) }}</p>
       </section>
     </div>

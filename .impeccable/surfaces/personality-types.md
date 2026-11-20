@@ -10,7 +10,7 @@ The references are [16Personalities' type directory](https://www.16personalities
 
 THESIS: Make the differences between sixteen coding attitudes easy to browse and understand, without presenting them as professions, ability ratings, or scientific findings.
 
-OWN-WORLD: Native Nuxt UI buttons, badges, collapsibles, and one reading card, with system typography and the shared header/footer. Emerald, sky, amber, and rose distinguish four equally valued groups. Lucide role symbols stay compact; remove large low-information backplates.
+OWN-WORLD: Native Nuxt UI buttons, badges, collapsibles, and one reading card, with system typography and the shared header/footer. Blue, cyan, orange, and teal distinguish four equally valued groups using dedicated, non-status Nuxt UI color roles. Lucide role symbols stay compact; remove large low-information backplates.
 
 STORY: Visitors scan four groups and sixteen named choices. Desktop selection updates the adjacent sticky archive; mobile choices expand in place. Code order and branching classification remain available through secondary disclosure.
 

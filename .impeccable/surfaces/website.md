@@ -10,13 +10,13 @@ Product boundaries are defined in the [product overview](../../PRODUCT.md); reus
 
 THESIS: Make the path from introduction to answering to a readable result direct. Keep the question count and estimated duration beside Start test. Explain invalid and balanced outcomes without forcing a personality assignment.
 
-OWN-WORLD: Native Nuxt UI styling with emerald primary and slate neutral colors. Reuse buttons, containers, navigation, cards, radio groups, progress, empty states, alerts, collapsibles, and theme controls. Preserve system typography, rounding, borders, and keyboard focus.
+OWN-WORLD: Native Nuxt UI styling with royal-blue primary, cyan reading links, warm-orange personality links, and slate neutrals. Keep the bright blue-to-white home surface and clean reading areas. Reuse buttons, containers, navigation, cards, radio groups, progress, empty states, alerts, collapsibles, and theme controls. Preserve system typography, rounding, borders, and keyboard focus.
 
 STORY: Visitors answer concrete coding situations, review their choices, then read a personality summary and dimension breakdown. They can copy a link and reopen it without an account. The About page and dimension explanations remain available independently.
 
 FIRST VIEWPORT: BUGTI branding and navigation at the top; centered title and concise product description; Start test with 32 questions and an estimated 7–10-minute duration. No fabricated usage statistics or sample results.
 
-FORM: seed: none (pinned). Use Nuxt UI's native language rather than a new visual identity. Theme switching and non-blocking settling animations respect reduced-motion preferences.
+FORM: Color-only brand replacement approved as option 3, blue/cyan with warm orange; reference `.impeccable/mocks/decision/brand-classic.png`, seed:1b05cda19611e326. Keep the existing composition and Nuxt UI's native component language. Theme switching and non-blocking settling animations respect reduced-motion preferences.
 
 FINISH: Visual and behavioral review includes actual answering, result restoration, recovery, and translation states. No raster media is introduced for the questionnaire.
 
@@ -33,7 +33,7 @@ FINISH: Visual and behavioral review includes actual answering, result restorati
 
 ## Home composition
 
-Keep the shared brand, language, and theme controls. About remains in the footer. Group dimensions and personalities under Personality types. Place the primary action above a compact question-count/duration row. Below the hero, use equally prominent introductions to the two existing explanation pages, side by side on desktop and stacked on mobile.
+Keep the shared brand, language, and theme controls. On the home route, the header is transparent and borderless; a single hero gradient begins at the document top behind it, without shifting content. Other routes keep the opaque header and native menus keep opaque surfaces. About remains in the footer. Group dimensions and personalities under Personality types. Place the primary action above a compact text-only question-count/duration row. Below the hero, use equally prominent introductions to the two existing explanation pages, side by side on desktop and stacked on mobile. Each introduction has one short sentence and a linked heading with an arrow; omit repeated footer actions.
 
 ## Test composition
 

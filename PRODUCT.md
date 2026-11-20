@@ -34,7 +34,7 @@ The implemented scope includes the website foundation and an exploratory questio
 - A `/personality-types` directory with sixteen approved archetypes and bilingual profiles: grouped choices with a sticky reading panel on desktop, inline expansion on mobile, and classification details on demand.
 - Responsive layouts, light and dark themes, and Simplified Chinese and English.
 
-Locale selection preserves URLs and is saved in a cookie. The questionnaire uses BUGTI-Q3 content and BUGTI-S1 scoring. There are no accounts, database, domain, or public deployment. Drafts use session storage in the current tab. Result links use a query parameter with three-bit packed answers, a version/locale header, and a compact checksum, encoded as 19 Base64URL characters. Whoever has a link can read its answers; the query can also appear in server logs. The checksum detects accidental corruption, not deliberate alteration or authenticity. See [Questionnaire implementation](docs/0004-questionnaire-implementation.md).
+Locale selection preserves URLs and is saved in a cookie. The questionnaire uses BUGTI-Q3 content and BUGTI-S1 scoring. There are no accounts, application backend, database, domain, or public deployment. Drafts use session storage in the current tab. Result links use a query parameter with three-bit packed answers, a version/locale header, and a compact checksum, encoded as 19 Base64URL characters. Whoever has a link can read its answers. The checksum detects accidental corruption, not deliberate alteration or authenticity. See [Questionnaire implementation](docs/0004-questionnaire-implementation.md).
 
 ## Dimensions
 
@@ -113,4 +113,4 @@ Stable codes and group membership are maintained in `app/data/personalities.ts`;
 
 ## Open decisions
 
-Questionnaire validation, empirical confirmation of the response format and completion time, long-term/server-side result persistence, and the deployment target remain open. The implemented content and scoring convention require independent review and real-sample validation before any scientific-validity claims.
+Questionnaire validation, empirical confirmation of the response format and completion time, long-term result persistence, and the deployment target remain open. The implemented content and scoring convention require independent review and real-sample validation before any scientific-validity claims.

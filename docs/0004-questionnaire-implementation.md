@@ -2,7 +2,7 @@
 
 ## Scope
 
-The local website implements the exploratory BUGTI-Q3 questionnaire and BUGTI-S1 scoring described in [Questionnaire content and scoring](0003-questionnaire-and-scoring.md). It does not establish scientific validity or measured completion time. No account, backend database, or public deployment is added.
+The local website implements the exploratory BUGTI-Q3 questionnaire and BUGTI-S1 scoring described in [Questionnaire content and scoring](0003-questionnaire-and-scoring.md). It does not establish scientific validity or measured completion time. No account, application backend, database, or public deployment is added.
 
 ## Flow
 
@@ -47,7 +47,7 @@ Base64URL uses `-` and `_` and omits padding. Decode requires the exact token le
 
 Restoration computes the result instead of trusting a caller-provided personality code or score. Earlier headers `0x10`/`0x11` remain viewable as BUGTI-Q2.1 + BUGTI-S1, including code 5 as the historical Cannot judge answer. They show the original bilingual statements and a version notice, keep their original token when copied, and do not offer editing into a new-version draft. Old draft storage is not read by the current version. Keep the header meaning and decoder stable when adding new content versions. Never reuse the same header for changed statements or scoring. The earlier unpublished fragment format is not emitted or accepted.
 
-CRC detects common accidental corruption; it is not encryption, a signature, or protection against deliberate modification. Anyone with the URL can recover the answers. Query data is sent to the server in an ordinary request and may be recorded in server/proxy logs or browser history. Result pages set noindex and no-referrer; these are not secrecy guarantees. No user identity or account is encoded.
+CRC detects common accidental corruption; it is not encryption, a signature, or protection against deliberate modification. Anyone with the URL can recover the answers. Result links may appear in browser history. Result pages set noindex and no-referrer; these are not secrecy guarantees. No user identity or account is encoded.
 
 Copy result link remains a single toolbar action; there is no dedicated saving section. If the Clipboard API fails, a selected input is shown for manual copying. Copying current results uses the current locale in the token and the current site origin. Historical copies preserve the original token and its embedded locale. A localhost link stays local; cross-device access requires an accessible deployment, which is not performed automatically.
 

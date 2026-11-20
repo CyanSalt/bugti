@@ -162,12 +162,13 @@ useSeoMeta({ title: () => t('test.pageTitle'), robots: 'noindex, nofollow' })
             :items="responseOptions"
             :name="question.id"
             aria-labelledby="question-heading"
+            :aria-describedby="answerError ? 'answer-error' : undefined"
             variant="card"
             size="lg"
             highlight
-            :ui="{ fieldset: 'gap-3', item: 'min-h-14 cursor-pointer', label: 'leading-6' }"
+            :ui="{ fieldset: 'gap-3', item: 'min-h-14 cursor-pointer duration-150 has-data-[state=checked]:bg-primary/10 has-data-[state=checked]:[&_[data-slot=label]]:text-primary', label: 'text-base/6' }"
           />
-          <p v-if="answerError" role="alert" class="mt-4 text-sm text-error">{{ t('test.chooseAnswer') }}</p>
+          <p v-if="answerError" id="answer-error" role="alert" class="mt-4 text-sm text-error">{{ t('test.chooseAnswer') }}</p>
           <div v-if="answered === questions.length && draft.step < questions.length - 1" class="mt-5 flex justify-end">
             <UButton type="button" color="neutral" variant="link" :label="t('test.review')" @click="goTo(questions.length)" />
           </div>
@@ -182,7 +183,10 @@ useSeoMeta({ title: () => t('test.pageTitle'), robots: 'noindex, nofollow' })
       </div>
 
       <div v-else-if="reviewing">
-        <h1 ref="reviewHeading" tabindex="-1" class="text-3xl font-semibold outline-none">{{ t('test.reviewTitle') }}</h1>
+        <h1 ref="reviewHeading" tabindex="-1" class="flex items-start gap-3 text-3xl font-semibold outline-none">
+          <UIcon v-if="answered === questions.length" name="i-lucide-list-check" class="mt-1 size-8 shrink-0 text-primary" />
+          <span>{{ answered === questions.length ? t('test.reviewCompleteTitle', { total: questions.length }) : t('test.reviewTitle') }}</span>
+        </h1>
         <p class="mt-3 text-base/7 text-toned">{{ t('test.reviewDescription') }}</p>
         <div class="mt-6 flex flex-wrap justify-between gap-3">
           <UButton color="neutral" variant="outline" icon="i-lucide-arrow-left" :label="t('test.previous')" @click="goTo(questions.length - 1)" />

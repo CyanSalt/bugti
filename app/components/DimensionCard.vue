@@ -22,7 +22,7 @@ defineProps<{ dimension: Dimension }>()
           <span class="font-semibold wrap-anywhere text-highlighted">{{ t(`poles.${pole.code}.label`) }}</span>
         </div>
         <p v-if="t(`poles.${pole.code}.label`) !== pole.word" class="mb-2 break-words text-xs text-muted">{{ pole.word }}</p>
-        <p class="text-sm/6 text-toned">{{ t(`poles.${pole.code}.description`) }}</p>
+        <p class="text-base/7 text-toned">{{ t(`poles.${pole.code}.description`) }}</p>
       </div>
     </UPageGrid>
   </UPageCard>

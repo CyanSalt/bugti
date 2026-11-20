@@ -42,11 +42,11 @@ useSeoMeta({
 
 <template>
   <UContainer class="py-8 sm:py-12">
-    <UPageHeader :title="t('typesPage.title')" :description="t('typesPage.description')" :ui="{ root: 'border-0 pb-0', title: 'text-3xl sm:text-4xl', description: 'max-w-3xl text-base/7' }" />
+    <UPageHeader :title="t('typesPage.title')" :description="t('typesPage.description')" :ui="{ root: 'border-0 pb-0', title: 'text-3xl sm:text-4xl', description: 'max-w-[65ch] text-base/7' }" />
 
     <div class="mt-6 flex flex-wrap items-center justify-between gap-4">
       <nav class="flex flex-wrap gap-2" :aria-label="t('typesPage.groupNavigation')">
-        <UButton v-for="group in groups" :key="group.id" :to="`#group-${group.id}`" external color="neutral" variant="soft" :label="`${group.id} · ${t(`personalityGroups.${group.id}.title`)}`" :class="['whitespace-normal text-start', group.textClass]" />
+        <UButton v-for="group in groups" :key="group.id" :to="`#group-${group.id}`" external :color="group.color" variant="soft" :label="`${group.id} · ${t(`personalityGroups.${group.id}.title`)}`" :class="['whitespace-normal text-start', group.textClass]" />
       </nav>
       <UCollapsible v-model:open="showClassification" :unmount-on-hide="false" class="contents" :ui="{ content: 'w-full' }">
         <UButton color="neutral" variant="link" :label="t('typesPage.classification')" :trailing-icon="showClassification ? 'i-lucide-chevron-up' : 'i-lucide-chevron-down'" class="px-0" />
@@ -85,7 +85,7 @@ useSeoMeta({
           <div id="archive-detail" ref="detail" aria-live="polite" aria-atomic="true">
             <div class="flex items-start justify-between gap-5">
               <div class="min-w-0">
-                <h2 id="archive-name" :class="['text-3xl font-bold text-balance xl:text-4xl', selectedGroup.textClass]">{{ t(`personalities.${selected.code}.name`) }}</h2>
+                <h2 id="archive-name" :class="['text-3xl/tight font-bold text-balance break-words xl:text-4xl/tight', selectedGroup.textClass]">{{ t(`personalities.${selected.code}.name`) }}</h2>
                 <p :class="['mt-3 text-sm font-semibold', selectedGroup.textClass]">{{ t(`personalityGroups.${selectedGroup.id}.title`) }} · {{ selectedGroup.id }}</p>
               </div>
               <UIcon :name="selected.icon" :class="['size-12 shrink-0', selectedGroup.textClass]" aria-hidden="true" />

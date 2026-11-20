@@ -2,25 +2,84 @@
 @import "@nuxt/ui";
 
 @theme {
+  --color-blue-600: #2563eb;
+  --color-orange-500: #e96c43;
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
 }
 
 :root {
   --ui-radius: 0.5rem;
-  --ui-primary: var(--ui-color-primary-700);
+  --ui-primary: var(--ui-color-primary-600);
+  --ui-primary-hover: var(--ui-color-primary-700);
+  --ui-secondary: var(--ui-color-secondary-700);
+  --ui-accent: var(--ui-color-accent-700);
+  --ui-success: var(--ui-color-success-700);
+  --ui-info: var(--ui-color-info-700);
+  --ui-warning: var(--ui-color-warning-700);
+  --ui-error: var(--ui-color-error-700);
+  --ui-planner: var(--ui-color-planner-700);
+  --ui-practitioner: var(--ui-color-practitioner-700);
+  --ui-pioneer: var(--ui-color-pioneer-700);
+  --ui-guardian: var(--ui-color-guardian-700);
+  --ui-text-muted: var(--ui-color-neutral-600);
+  --ui-text-dimmed: var(--ui-color-neutral-600);
+  --ui-bg-muted: var(--ui-color-neutral-100);
 }
 
 .dark {
   --ui-primary: var(--ui-color-primary-400);
+  --ui-primary-hover: var(--ui-color-primary-300);
+  --ui-secondary: var(--ui-color-secondary-400);
+  --ui-accent: var(--ui-color-accent-400);
+  --ui-success: var(--ui-color-success-400);
+  --ui-info: var(--ui-color-info-400);
+  --ui-warning: var(--ui-color-warning-400);
+  --ui-error: var(--ui-color-error-400);
+  --ui-planner: var(--ui-color-planner-400);
+  --ui-practitioner: var(--ui-color-practitioner-400);
+  --ui-pioneer: var(--ui-color-pioneer-400);
+  --ui-guardian: var(--ui-color-guardian-400);
+  --ui-text-muted: var(--ui-color-neutral-400);
+  --ui-text-dimmed: var(--ui-color-neutral-400);
+  --ui-bg: var(--ui-color-neutral-950);
+  --ui-bg-muted: var(--ui-color-neutral-900);
+  --ui-bg-elevated: var(--ui-color-neutral-800);
+  --ui-border: var(--ui-color-neutral-700);
+}
+
+.home-hero::before {
+  content: "";
+  position: absolute;
+  inset: calc(0px - var(--ui-header-height)) 0 0;
+  z-index: -1;
+  pointer-events: none;
+  background: linear-gradient(180deg, var(--ui-color-primary-50), var(--ui-bg));
+}
+
+.dark .home-hero::before {
+  background: linear-gradient(180deg, var(--ui-color-primary-950), var(--ui-bg));
 }
 
 html {
   scroll-padding-top: 5rem;
-  scrollbar-color: var(--ui-border-accented) var(--ui-bg);
+  scrollbar-color: var(--ui-text-muted) var(--ui-bg);
 }
 
 body {
   min-width: 320px;
+  caret-color: var(--ui-primary);
+}
+
+@layer base {
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
 }
 
 ::selection {

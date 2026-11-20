@@ -2,10 +2,12 @@
 name: BUGTI
 description: A programmer personality test website built with Nuxt UI
 colors:
-  primary: "oklch(50.8% 0.118 165.612)"
-  primary-dark: "oklch(76.5% 0.177 163.223)"
+  primary: "#2563eb"
+  primary-dark: "oklch(70.7% 0.165 254.624)"
+  secondary: "oklch(52% 0.105 223.128)"
+  accent: "oklch(55.3% 0.195 38.402)"
   background: "#ffffff"
-  background-dark: "oklch(20.8% 0.042 265.755)"
+  background-dark: "oklch(12.9% 0.042 264.695)"
   text: "oklch(20.8% 0.042 265.755)"
   text-dark: "#ffffff"
 typography:
@@ -41,11 +43,15 @@ components:
 
 ## Overview
 
-Use the native Nuxt UI design system. The BUGTI name, consistent icons, and emerald primary color establish the brand. Reuse Nuxt UI layouts, buttons, navigation, cards, alerts, empty states, and theme controls rather than creating a separate component language.
+Use the native Nuxt UI design system. The BUGTI name, consistent icons, royal-blue primary, cyan secondary, and warm-orange accent establish the brand. Reuse Nuxt UI layouts, buttons, navigation, cards, alerts, empty states, and theme controls rather than creating a separate component language.
 
 ## Colors
 
-Use the primary color for the main action, brand icon, and dimension codes. Light mode uses emerald 700; dark mode uses emerald 400. Neutral colors follow the slate palette.
+Use royal blue for the main action, brand icon, focus, and dimension results. Light mode uses blue 600 (`#2563eb`); dark mode uses blue 400. Cyan marks the dimensions reading destination and its summary; orange marks the personality destination. Use darker cyan/orange steps for small text, reserving the brighter orange 500 (`#e96c43`) for non-text color roles. Neutral colors follow slate. The home hero fades from blue 50 to the white reading canvas; its dark counterpart fades from blue 950 to slate 950, with no full saturated-color takeover. One continuous gradient extends behind the transparent, borderless home header from the document top. Other routes retain the opaque native header; menu overlays keep their native opaque surfaces.
+
+Personality groups have independent, non-status roles: CR blue, CE cyan, DF orange, and DG teal. Use step 700 for light-theme group text, 400 for dark-theme group text, 50/950 for selected surfaces, and 800/200 for their supporting text. Names, codes, icons, and selected/disclosed state remain non-color cues. Success, warning, and error colors are reserved for actual statuses.
+
+Dark mode uses slate 950 for the canvas, 900 for muted areas, 800 for elevated controls, and 700 for borders. Muted body copy uses slate 600 in light mode and 400 in dark mode. Primary solid and link hovers use explicit darker/lighter blue steps rather than translucent foregrounds, keeping text readable.
 
 Both ends of a dimension use the same color. Color must not imply that one preference is better.
 
@@ -53,7 +59,9 @@ The implementation sources are `app/app.config.ts` and `app/assets/css/main.css`
 
 ## Typography
 
-Use the system font stack with CJK support and no external font loading. Home page titles are 36px on mobile and 60px on desktop. Section titles are 24px / 30px; body text is 14px / 16px depending on its role.
+Use the system font stack with CJK support and no external font loading. Home page titles are 36px on mobile and 60px on desktop, both with 1.25 line height. Home introduction headings are 20px on mobile and 24px on desktop; page and profile titles use 30px / 36px. Result profile section headings use 18px semibold, clearly separate from 16px regular prose. Keep 14px for compact directory summaries, controls, and supporting labels, and 12px for codes, canonical-name annotations, and technical metadata.
+
+Use 16px / 28px for ordinary descriptions, dimension explanations, expanded mobile profiles, and answer options (24px leading inside native radio cards). Longer profile prose uses 16px / 32px. Page introductions and About prose are bounded to approximately 65ch; smaller cards and mobile columns inherit their available width. Balance headings and short centered blocks, and use pretty wrapping for prose. Keep long profile titles in a shrinkable text column beside the icon, with a word-wrap fallback. Use tabular numerals for response indices so changing scores retain alignment.
 
 Allow long translated labels and canonical English names to wrap. Dimension codes remain bold. When an English label already matches its canonical name, omit the duplicate secondary name.
 
@@ -61,7 +69,7 @@ Allow long translated labels and canonical English names to wrap. Dimension code
 
 Use `UContainer` for width and horizontal spacing. The home page has two short introductions, for four dimensions and sixteen personalities, each with its own destination. Present them side by side on desktop and stack them on mobile, without showing full classification details. On `/dimensions`, the dimension summary has two columns on mobile and four on desktop. Dimension cards use one column on mobile and two on wide screens; `UPageGrid` presents both ends side by side inside each `UPageCard`.
 
-Use `UPageGrid`, naked `UPageCard` sections, and `USeparator` for the home page introductions; preserve native heading, body, and footer slots. Use the `UHeader` mobile menu and a shared footer. A single `UDropdownMenu` groups dimension and personality links on desktop; a vertical `UNavigationMenu` preserves that hierarchy on mobile. Keep About in the footer only. Keep controls content-sized rather than assuming Chinese or English text lengths.
+Use `UPageGrid`, naked `UPageCard` sections, and `USeparator` for the home page introductions. Put a native `UButton` link in each heading slot so the heading itself opens the destination, without a repeated footer action. Keep each introduction to one short sentence. Use the `UHeader` mobile menu and a shared footer. A single `UDropdownMenu` groups dimension and personality links on desktop; a vertical `UNavigationMenu` preserves that hierarchy on mobile. Keep About in the footer only. Keep controls content-sized rather than assuming Chinese or English text lengths.
 
 ## Elevation & Depth
 

@@ -5,7 +5,7 @@ import type { DimensionResult } from '~/utils/scoring'
 const { score } = defineProps<{ score: DimensionResult }>()
 const { t } = useI18n({ useScope: 'global' })
 const { locale } = useAppLocale()
-const format = (value: number) => new Intl.NumberFormat(locale.value, { maximumFractionDigits: 3 }).format(value)
+const format = (value: number) => new Intl.NumberFormat(locale.value, { maximumFractionDigits: 0 }).format(value)
 </script>
 
 <template>
@@ -19,16 +19,16 @@ const format = (value: number) => new Intl.NumberFormat(locale.value, { maximumF
       <dl class="mt-5 grid grid-cols-2 gap-4 text-sm">
         <div>
           <dt class="text-toned">{{ score.dimension.left.code }} · {{ t(`poles.${score.dimension.left.code}.label`) }}</dt>
-          <dd class="mt-1 text-xl font-semibold text-primary">{{ t('result.points', { value: format(score.leftIndex) }) }}</dd>
+          <dd class="mt-1 text-xl font-semibold tabular-nums text-primary">{{ t('result.points', { value: format(score.leftIndex) }) }}</dd>
         </div>
         <div class="text-end">
           <dt class="text-toned">{{ score.dimension.right.code }} · {{ t(`poles.${score.dimension.right.code}.label`) }}</dt>
-          <dd class="mt-1 text-xl font-semibold text-primary">{{ t('result.points', { value: format(score.rightIndex) }) }}</dd>
+          <dd class="mt-1 text-xl font-semibold tabular-nums text-primary">{{ t('result.points', { value: format(score.rightIndex) }) }}</dd>
         </div>
       </dl>
       <div class="relative mt-3">
-        <UProgress :model-value="score.leftIndex" :max="100" size="sm" :aria-label="t('result.scoreAccessible', { left: t(`poles.${score.dimension.left.code}.label`), right: t(`poles.${score.dimension.right.code}.label`), leftScore: format(score.leftIndex), rightScore: format(score.rightIndex) })" />
-        <span aria-hidden="true" class="pointer-events-none absolute top-0 left-1/2 h-full border-l border-default" />
+        <UProgress :ui="{ base: 'bg-blue-100 dark:bg-blue-950' }" :model-value="score.leftIndex" :max="100" size="sm" :aria-label="t('result.scoreAccessible', { left: t(`poles.${score.dimension.left.code}.label`), right: t(`poles.${score.dimension.right.code}.label`), leftScore: format(score.leftIndex), rightScore: format(score.rightIndex) })" />
+        <span aria-hidden="true" class="pointer-events-none absolute top-0 left-1/2 h-full border-l border-blue-600 dark:border-blue-400" />
       </div>
       <p v-if="score.pole && score.nearBoundary" class="mt-3 text-sm/6 text-muted">{{ t('result.nearBoundary') }} · {{ t('result.nearBoundaryHelp') }}</p>
       <p v-if="score.pattern" class="mt-3 text-sm/6 text-toned">{{ t(`result.pattern${score.pattern === 'both' ? 'Both' : score.pattern === 'neither' ? 'Neither' : 'Neutral'}`) }}</p>

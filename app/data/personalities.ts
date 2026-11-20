@@ -33,31 +33,41 @@ export const personalityGroups = [
   {
     id: 'CR',
     poles: ['C', 'R'],
-    textClass: 'text-emerald-700 dark:text-emerald-400',
-    surfaceClass: 'bg-emerald-50 dark:bg-emerald-950/40',
+    color: 'planner',
+    textClass: 'text-planner',
+    mutedClass: 'text-blue-800 dark:text-blue-200',
+    surfaceClass: 'bg-blue-50 dark:bg-blue-950',
   },
   {
     id: 'CE',
     poles: ['C', 'E'],
-    textClass: 'text-sky-700 dark:text-sky-400',
-    surfaceClass: 'bg-sky-50 dark:bg-sky-950/40',
+    color: 'practitioner',
+    textClass: 'text-practitioner',
+    mutedClass: 'text-cyan-800 dark:text-cyan-200',
+    surfaceClass: 'bg-cyan-50 dark:bg-cyan-950',
   },
   {
     id: 'DF',
     poles: ['D', 'F'],
-    textClass: 'text-amber-700 dark:text-amber-400',
-    surfaceClass: 'bg-amber-50 dark:bg-amber-950/40',
+    color: 'pioneer',
+    textClass: 'text-pioneer',
+    mutedClass: 'text-orange-800 dark:text-orange-200',
+    surfaceClass: 'bg-orange-50 dark:bg-orange-950',
   },
   {
     id: 'DG',
     poles: ['D', 'G'],
-    textClass: 'text-rose-700 dark:text-rose-400',
-    surfaceClass: 'bg-rose-50 dark:bg-rose-950/40',
+    color: 'guardian',
+    textClass: 'text-guardian',
+    mutedClass: 'text-teal-800 dark:text-teal-200',
+    surfaceClass: 'bg-teal-50 dark:bg-teal-950',
   },
 ] as const satisfies ReadonlyArray<{
   id: PersonalityGroupId
   poles: readonly PoleCode[]
+  color: 'planner' | 'practitioner' | 'pioneer' | 'guardian'
   textClass: string
+  mutedClass: string
   surfaceClass: string
 }>
 

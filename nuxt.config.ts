@@ -14,7 +14,12 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   devtools: { enabled: false },
   compatibilityDate: '2026-11-19',
-  ui: { fonts: false },
+  ui: {
+    fonts: false,
+    theme: {
+      colors: ['primary', 'secondary', 'accent', 'success', 'info', 'warning', 'error', 'planner', 'practitioner', 'pioneer', 'guardian'],
+    },
+  },
   colorMode: { preference: 'light', fallback: 'light' },
   icon: {
     serverBundle: { collections: ['lucide'] },
@@ -23,7 +28,7 @@ export default defineNuxtConfig({
   app: {
     head: {
       meta: [
-        { name: 'theme-color', content: '#00a86b' },
+        { name: 'theme-color', content: '#2563eb' },
       ],
       link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
     },

@@ -21,7 +21,7 @@ watch(() => route.hash, (hash) => {
   <div :id="personality.code" class="min-w-0">
     <UButton
       :id="`select-${personality.code}`"
-      color="neutral"
+      :color="group.color"
       variant="ghost"
       :aria-pressed="selected"
       :aria-label="t('typesPage.selectType', { name: t(`personalities.${personality.code}.name`), code: personality.code })"
@@ -32,16 +32,16 @@ watch(() => route.hash, (hash) => {
       <span class="min-w-0 flex-1">
         <span class="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
           <span :class="['text-lg font-semibold', selected ? group.textClass : 'text-highlighted']">{{ t(`personalities.${personality.code}.name`) }}</span>
-          <span class="text-xs font-semibold tracking-wide text-muted">{{ personality.code }}</span>
+          <span :class="['text-xs font-semibold tracking-wide', selected ? group.mutedClass : 'text-muted']">{{ personality.code }}</span>
         </span>
-        <span class="mt-2 block text-sm/6 font-normal text-toned">{{ t(`personalities.${personality.code}.summary`) }}</span>
+        <span :class="['mt-2 block text-sm/6 font-normal', selected ? group.mutedClass : 'text-toned']">{{ t(`personalities.${personality.code}.summary`) }}</span>
       </span>
       <UIcon name="i-lucide-arrow-up-right" :class="['mt-1 size-4 shrink-0 transition-opacity', selected ? 'opacity-100' : 'opacity-0']" aria-hidden="true" />
     </UButton>
 
     <UCollapsible v-model:open="open" :unmount-on-hide="false" class="lg:hidden">
       <UButton
-        color="neutral"
+        :color="group.color"
         variant="ghost"
         :aria-label="t(open ? 'typesPage.readLessLabel' : 'typesPage.readMoreLabel', { name: t(`personalities.${personality.code}.name`), code: personality.code })"
         :class="['w-full items-start gap-3 rounded-xl p-4 text-start', open ? group.surfaceClass : '']"
@@ -50,17 +50,17 @@ watch(() => route.hash, (hash) => {
         <span class="min-w-0 flex-1">
           <span class="flex flex-wrap items-baseline justify-between gap-2">
             <span :class="['text-lg font-semibold', group.textClass]">{{ t(`personalities.${personality.code}.name`) }}</span>
-            <span class="text-xs font-semibold tracking-wide text-muted">{{ personality.code }}</span>
+            <span :class="['text-xs font-semibold tracking-wide', open ? group.mutedClass : 'text-muted']">{{ personality.code }}</span>
           </span>
-          <span class="mt-2 block text-sm/6 font-normal text-toned">{{ t(`personalities.${personality.code}.summary`) }}</span>
+          <span :class="['mt-2 block text-sm/6 font-normal', open ? group.mutedClass : 'text-toned']">{{ t(`personalities.${personality.code}.summary`) }}</span>
         </span>
         <UIcon name="i-lucide-chevron-down" :class="['mt-1 size-4 shrink-0 transition-transform duration-200', open ? 'rotate-180' : '']" aria-hidden="true" />
       </UButton>
       <template #content>
         <div class="px-4 pb-5">
-        <p class="pt-3 text-sm/7 text-toned">{{ t(`personalities.${personality.code}.description`) }}</p>
+        <p class="pt-3 text-base/7 text-toned">{{ t(`personalities.${personality.code}.description`) }}</p>
         <div class="mt-4 flex flex-wrap gap-2">
-          <UBadge v-for="pole in getPersonalityPoles(personality.code)" :key="pole.code" :label="`${pole.code} · ${t(`poles.${pole.code}.label`)}`" color="neutral" variant="soft" />
+          <UBadge v-for="pole in getPersonalityPoles(personality.code)" :key="pole.code" :label="`${pole.code} · ${t(`poles.${pole.code}.label`)}`" :color="group.color" variant="soft" />
         </div>
         </div>
       </template>
