@@ -6,6 +6,10 @@
 
 BUGTI is a programmer personality test about the trade-offs behind your coding decisions. It explores coding preferences and offers a starting point for self-reflection and conversations with other programmers.
 
+## Visit online
+
+☞ https://bugti-test.vercel.app/
+
 ## Four dimensions
 
 - **Control / Delegation (C/D):** Direct control over key mechanisms or reliance on trusted tools.

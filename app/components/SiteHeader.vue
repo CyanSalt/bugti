@@ -29,6 +29,16 @@ const mobileLinks = computed(() => [
       </UDropdownMenu>
       <LanguageSwitcher />
       <UColorModeButton />
+      <UButton
+        to="https://github.com/CyanSalt/bugti"
+        target="_blank"
+        rel="noopener noreferrer"
+        icon="i-lucide-github"
+        color="neutral"
+        variant="ghost"
+        :aria-label="t('common.github')"
+        :title="t('common.github')"
+      />
     </template>
 
     <template #body>
