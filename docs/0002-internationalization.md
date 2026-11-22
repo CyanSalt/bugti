@@ -2,7 +2,7 @@
 
 ## Supported languages
 
-The site uses the vue-i18n Composition API with Simplified Chinese (`zh-CN`) as the default and English (`en`) as an alternative. Locale changes preserve the current URL. Browser language is not used for automatic selection.
+The site uses the vue-i18n Composition API with Simplified Chinese (`zh-CN`) and English (`en`). Locale changes preserve the current URL. On first visit, the site selects the first supported browser language, matching regional variants to their base language when necessary.
 
 Page copy, dimension explanations, navigation, accessibility labels, SEO metadata, HTML `lang`, and Nuxt UI messages follow the selected locale.
 
@@ -16,7 +16,9 @@ Page copy, dimension explanations, navigation, accessibility labels, SEO metadat
 - `app/components/LanguageSwitcher.vue` uses a Nuxt UI dropdown menu and displays language names in their own language.
 - `@intlify/unplugin-vue-i18n` precompiles JSON messages during the build.
 
-The selected language is stored in the `bugti-locale` cookie for one year, with path `/` and `SameSite=Lax`. A valid result query on `/result` or `/test` embeds its language in the packed token and initializes the per-request instance before rendering; the same token initializes client hydration. Otherwise the cookie is used, with unsupported or missing values falling back to `zh-CN`. Language changes are saved immediately, including a language restored from a result link.
+The selected language is stored in the `bugti-locale` cookie for one year, with path `/` and `SameSite=Lax`. A valid result query on `/result` or `/test` embeds its language in the packed token and initializes the per-request instance before rendering; the same token initializes client hydration. Otherwise, a valid saved language takes precedence, followed by the browser language preference, then `zh-CN` when no supported browser language is available. Language changes are saved immediately, including a language restored from a result link.
+
+The language menu always lists English first, followed by every other registered locale in ascending ISO code order.
 
 Do not share mutable locale state across SSR requests or replace the server-visible cookie with client-only persistence.
 

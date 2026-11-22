@@ -1,7 +1,7 @@
 import { createI18n } from 'vue-i18n'
 import { describe, expect, it } from 'vitest'
 import { readFileSync, globSync } from 'node:fs'
-import { defaultLocale, isAppLocale, localeOptions, messages, resolveLocale } from '../app/locales'
+import { defaultLocale, isAppLocale, localeOptions, messages, resolveBrowserLocale, resolveLocale } from '../app/locales'
 
 function flattenMessages(value: object, prefix = ''): Record<string, string> {
   return Object.fromEntries(Object.entries(value).flatMap(([key, child]) => {
@@ -63,9 +63,21 @@ describe('Localized messages', () => {
 })
 
 describe('Locale validation', () => {
+  it('lists English first and all remaining locales by ISO code', () => {
+    const localeCodes = localeOptions.map(option => option.value)
+    expect(localeCodes[0]).toBe('en')
+    expect(localeCodes.slice(1)).toEqual([...localeCodes.slice(1)].sort())
+  })
+
   it('preserves supported locales', () => {
     expect(resolveLocale('en')).toBe('en')
     expect(resolveLocale('zh-CN')).toBe('zh-CN')
+  })
+
+  it('matches browser language preferences before falling back to the default locale', () => {
+    expect(resolveBrowserLocale(['en-US', 'zh-CN'])).toBe('en')
+    expect(resolveBrowserLocale(['fr-CA', 'zh-CN'])).toBe('zh-CN')
+    expect(resolveBrowserLocale(['fr-CA'])).toBe(defaultLocale)
   })
 
   it.each([undefined, null, '', 'fr', 'en-US', '__proto__', 'constructor', [], {}])('falls back to the default locale for unsupported or invalid value %j', (value) => {

@@ -1,14 +1,16 @@
 import { createI18n } from 'vue-i18n'
-import { defaultLocale, localeCookieName, messages, resolveLocale } from '~/locales'
+import { defaultLocale, isAppLocale, localeCookieName, messages, resolveBrowserLocale, resolveLocale } from '~/locales'
 import { readResultQuery } from '~/utils/resultLink'
 
 export default defineNuxtPlugin((nuxtApp) => {
   const savedLocale = useCookie<string>(localeCookieName, {
-    default: () => defaultLocale,
     path: '/',
     sameSite: 'lax',
     maxAge: 60 * 60 * 24 * 365,
   })
+  const browserLocales = import.meta.server
+    ? (useRequestHeaders(['accept-language'])['accept-language'] ?? '').split(',').map(value => value.trim().split(';', 1)[0]!)
+    : navigator.languages
 
   const url = useRequestURL()
   const query: Record<string, unknown> = {}
@@ -22,7 +24,9 @@ export default defineNuxtPlugin((nuxtApp) => {
   const i18n = createI18n({
     legacy: false,
     globalInjection: false,
-    locale: linkedResult?.status === 'valid' ? linkedResult.locale : resolveLocale(savedLocale.value),
+    locale: linkedResult?.status === 'valid'
+      ? linkedResult.locale
+      : isAppLocale(savedLocale.value) ? savedLocale.value : resolveBrowserLocale(browserLocales),
     fallbackLocale: defaultLocale,
     messages,
   })
